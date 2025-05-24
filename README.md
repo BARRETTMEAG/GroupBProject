@@ -1,2 +1,2 @@
 # GroupBProject
-Group B Group Project
+CS2450 Group B Group Project
