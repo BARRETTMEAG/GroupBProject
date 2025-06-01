@@ -2,6 +2,8 @@
 
 As a client, I want to develop a software simulator called UVSim for computer science students to learn machine language and computer architecture, so that students can execute their machine language programs on the simulator.
 
+As a CS student, I want to run my BasicML program in the UVSim so I can understand how assembly-level instructions interact with CPU and memory.
+
 
 Use Cases:
 
