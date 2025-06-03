@@ -37,13 +37,18 @@ class CPU:
             self.accumulator = int(self.accumulator) * int(memory[operand])
 
         elif opcode == 40:  # BRANCH = Branch to a specific location in memory
-            pass
+            self.program_counter = operand
+            return
 
         elif opcode == 41:  # BRANCHNEG = Branch to a specific location in memory if the accumulator is negative.
-            pass
+            if self.accumulator < 0:
+                self.program_counter = operand
+            return
 
         elif opcode == 42:  # BRANCHZERO = Branch to a specific location in memory if the accumulator is zero.
-            pass
+            if self.accumulator == 0:
+                self.program_counter = operand
+            return
         
         elif opcode == 43:  # HALT = Stop the program
             self.halted = True
