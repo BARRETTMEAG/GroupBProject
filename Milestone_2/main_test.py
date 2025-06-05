@@ -1,6 +1,7 @@
 import pytest
 from main import CPU
 from memory import Memory
+from main import UVSim
 
 @pytest.fixture
 def setup():
