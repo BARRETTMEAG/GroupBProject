@@ -28,7 +28,7 @@ class CPU:
             self.accumulator = int(self.accumulator) + int(memory[operand])
 
         elif opcode == 31:  # SUBTRACT = Subtract a word from a specific location in memory from the word in the accumulator (leave the result in the accumulator)
-            self.accumulator = int(self.accumulator) - (memory[operand])
+            self.accumulator = int(self.accumulator) - int(memory[operand])
 
         elif opcode == 32:  # DIVIDE = Divide the word in the accumulator by a word from a specific location in memory (leave the result in the accumulator).
             self.accumulator = int(self.accumulator) / int(memory[operand])
@@ -43,18 +43,27 @@ class CPU:
         elif opcode == 41:  # BRANCHNEG = Branch to a specific location in memory if the accumulator is negative.
             if self.accumulator < 0:
                 self.program_counter = operand
+            else:
+                self.program_counter += 1
             return
 
         elif opcode == 42:  # BRANCHZERO = Branch to a specific location in memory if the accumulator is zero.
             if self.accumulator == 0:
                 self.program_counter = operand
+            else:
+                self.program_counter += 1
             return
         
         elif opcode == 43:  # HALT = Stop the program
             self.halted = True
+            print("HALT instruction encountered at memory [" + str(self.program_counter) + "]")
             return
 
+        else:
+            raise ValueError("Unknown opcode '" + str(opcode) + "' encountered at memory [" + str(self.program_counter) + "]")
+
         self.program_counter += 1
+        return
 
 
 class UVSim:
@@ -76,9 +85,8 @@ class UVSim:
                     elif char.isspace(): # Program encounters whitespace
                         if not word:
                             continue # Skips words containing only blank spaces
-                        elif len(word) < 5: # Validates length of word (including sign)
-                            word = ""
-                            continue
+                        elif len(word) != 5: # Validates length of word (including sign)
+                            raise ValueError("Incorrect word length encountered at memory [" + str(self.cpu.program_counter) + "]")
                         else:
                             instruction = int(word) # Convert word to instruction of type integer when an 'enter' char is encountered
                             self.memory.write(i, instruction)
@@ -103,6 +111,7 @@ def main():
     sim.run()
 
     # Output code for troubleshooting:
+    """
     j = 0
     for i in sim.memory.memory:
         if sim.memory.memory[j]:
@@ -111,6 +120,7 @@ def main():
         else:
             print("Memory at [" + str(j) + "] is empty.")
             j += 1
+    """
     print("Accumulator register value:", str(sim.cpu.accumulator))
     #
 
