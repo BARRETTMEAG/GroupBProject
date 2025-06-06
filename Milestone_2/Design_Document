@@ -7,37 +7,31 @@ As a CS student, I want to run my BasicML program in the UVSim so I can understa
 
 Use Cases:
 
-Opening a file
 Actor: Program user
 System:
 User launches program
 Program prompts user for a file
 User enters a file name into the console
 Program checks file name syntax, and if correct (and existing), reads the file into memory
-If the program name is incorrect or does not exist, the appropriate error is raised
-Program checks each word in the file for an integer of length 4, raising an error if a value is incorrect
-Program begins at the first memory location, 00
+If the program name is incorrect or does not exist, the appropriate error is raised, and user is prompted for a new file name
+Program checks each word in the file for a word of length 5 (including sign), raising an error if a value is incorrect
 Goal: Retrieve a file necessary for program operation
 
-Branch
 Actor: Program
 System: 
 Program encounters an “operation code” of 40 (the first two digits in the word)
 Program jumps to the specified memory location, and continues operation as normal
 Goal: Skip over subsequent operations to a specific location in memory
 
-Read
 Actor: Program user
 System: 
 Program encounters an opcode of 10
-Program prompts the user to enter a 4-digit word
-User enters the 4-digit word and presses ‘enter’
-Program checks that the word is valid, raising an error if not
-Program inserts the word given by the user into the operand of the instruction
+Program prompts the user to enter a value
+User enters the value and presses 'enter'
+Program inserts the value given by the user into the operand of the instruction
 Program continues to the next instruction
-	Goal: Input a value to be used by the program
+Goal: Input a value from the keyboard into memory
 
-Program finish
 Actor: Program
 System:
 Program encounters an opcode of 43
