@@ -184,21 +184,21 @@ def test_write_prints_hello_world(monkeypatch, capsys):
     assert "Hello World" in captured.out
 """In Spreadsheet: Name: Print Hello World, Definition: Test that program can perform basic programming projects such as printing 'Hello World', Use Case: Print Hello World, Input: Hello World, Output: Hello World, Succeeded: Prints Hello World to Console"""
 
-def test_load_then_print_hello_world(monkeypatch, capsys):
+def test_input_then_print_hello_world(monkeypatch, capsys):
     sim = UVSim()
-    sim.memory.write(0, 2020)  # LOAD from address 20
-    sim.memory.write(1, 2121)  # STORE into address 21
-    sim.memory.write(2, 1121)  # WRITE from address 21
-    sim.memory.write(3, 4300)  # HALT
-    sim.memory.write(20, "Hello World")
+    sim.memory.write(0, 1020)  # READ into address 20
+    sim.memory.write(1, 1120)  # WRITE from address 20
+    sim.memory.write(2, 4300)  # HALT
+
+    # User input of "Hello World"
+    monkeypatch.setattr("builtins.input", lambda _: "Hello World")
 
     sim.run()
     captured = capsys.readouterr()
     assert "Hello World" in captured.out
     assert sim.cpu.halted is True
-"""In Spreadsheet: Name: Load and Print Hello World, Definition: Test that program can load words and print them out correctly, Use Case: Print Hello World, Input: Hello World, Output: Hello World, Succeeded: Prins Hello World to console"""
 
-# --- Store new data to memory ---
+# --- Load and Store Data to memory and accumulator ---
 def test_load_and_store_value():
     cpu = CPU()
     mem = Memory()
@@ -207,13 +207,11 @@ def test_load_and_store_value():
     assert cpu.accumulator == 42
     cpu.execute(2111, mem.memory)  # STORE to address 11
     assert mem.read(11) == 42
-"""In Spreadsheet: Name: Load to Memory, Defintion; Test that program correcty loads and stores values to memory, Use Case: Store new data to memory, Input: 42, Output: True, Succeeded: 42 loaded to address 11 """
 
 def test_invalid_address_raises():
     mem = Memory()
     with pytest.raises(IndexError):
         mem.write(200, 99)
-"""In Spreadsheet: Name: Invalid Address, Definition: Catch invalid addresses, Use Case: Store new data to memory, Input: 99, Output: IndexError, Succeeded: IndexError"""
 
 # --- Utilize Mutliplication Opcode ---
 def test_multiply_two_values():
@@ -223,7 +221,6 @@ def test_multiply_two_values():
     mem.write(7, 7)
     cpu.execute(3307, mem.memory)  # MULTIPLY by memory[7]
     assert cpu.accumulator == 42
-"""In Spreadsheet: Name: Multiplication, Defintion: Check that program correctly multiplies values, Use Case: Utilize Mutliplication Opcode, Inputs: 6, 7, Ouputs: 42, Succeeded: Accumulator is 42"""
 
 def test_multiplication_with_zero():
     cpu = CPU()
@@ -232,4 +229,3 @@ def test_multiplication_with_zero():
     mem.write(20, 5)
     cpu.execute(3320, mem.memory)  # MULTIPLY by memory[20]
     assert cpu.accumulator == 0
-"""In Spreadsheet: Name: Zero Multiplication, Definition: Check that program correclty multiplies by zero, Use Case: Utilize Multiplication Opcode, Inputs: 5, 0, Outputs: 0, Succeeded: Accumulator is 0"""
