@@ -86,7 +86,7 @@ class UVSim:
                         if not word:
                             continue # Skips words containing only blank spaces
                         elif len(word) != 5: # Validates length of word (including sign)
-                            raise ValueError("Incorrect word length encountered at memory [" + str(self.cpu.program_counter) + "]")
+                            raise ValueError("Incorrect word length encountered at memory [" + str(i) + "]")
                         else:
                             instruction = int(word) # Convert word to instruction of type integer when an 'enter' char is encountered
                             self.memory.write(i, instruction)
