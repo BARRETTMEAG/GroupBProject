@@ -101,9 +101,10 @@ Programmer runs the program.
 Program asks user for input file
 User submits the path for the file
 The program runs through the inputs, and notifies the user of an error if one is encountered
-The program executes the inputs and saves the corresponding data to memory.
+The program executes the inputs and loads data to memory.
+The program then stores data into accumulator.
 The program terminates with the HALT command.
-Goal: Load new data to main memory.
+Goal: Load and store data.
 
 Actor: Programmer
 System:
