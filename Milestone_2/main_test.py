@@ -21,24 +21,24 @@ def test_program_init():
     sim.load_program('Test1.txt')
 
     assert sim.memory.memory[0] == 1007
-    assert sim.memory.memory[0] == 1008
-    assert sim.memory.memory[0] == 2007
-    assert sim.memory.memory[0] == 3008
-    assert sim.memory.memory[0] == 2109
-    assert sim.memory.memory[0] == 1109
-    assert sim.memory.memory[0] == 4300
+    assert sim.memory.memory[1] == 1008
+    assert sim.memory.memory[2] == 2007
+    assert sim.memory.memory[3] == 3008
+    assert sim.memory.memory[4] == 2109
+    assert sim.memory.memory[5] == 1109
+    assert sim.memory.memory[6] == 4300
 
     sim.load_program('Test2.txt')
 
     assert sim.memory.memory[0] == 1009
-    assert sim.memory.memory[0] == 1010
-    assert sim.memory.memory[0] == 2009
-    assert sim.memory.memory[0] == 3110
-    assert sim.memory.memory[0] == 4107
-    assert sim.memory.memory[0] == 1109
-    assert sim.memory.memory[0] == 4300
-    assert sim.memory.memory[0] == 1110
-    assert sim.memory.memory[0] == 4300
+    assert sim.memory.memory[1] == 1010
+    assert sim.memory.memory[2] == 2009
+    assert sim.memory.memory[3] == 3110
+    assert sim.memory.memory[4] == 4107
+    assert sim.memory.memory[5] == 1109
+    assert sim.memory.memory[6] == 4300
+    assert sim.memory.memory[7] == 1110
+    assert sim.memory.memory[8] == 4300
     
 def test_memory_write_and_read():
     memory = Memory()
