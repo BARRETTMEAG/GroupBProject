@@ -22,7 +22,7 @@ Additionally, the program uses the `pytest` library for testing. You can install
 ## Testing the Application
 To run the unit tests for the application, use the following command:
 
-When entering a four-digit number (+1235), the number is divided by the first two digits and the last two digits. The 12 or whatever number is known as the memory and the 35 would be the memory location portion of the code.
+When entering a four-digit number (+1235), the number is separated by the first two digits and the last two digits. The 12 or whatever number is known as the memory and the 35 would be the memory location portion of the code.
 
 BasicML vocabulary defined as follows:
 
