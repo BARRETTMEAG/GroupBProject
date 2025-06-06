@@ -114,3 +114,13 @@ Program encounters opcode '33'
 Program multiplies number in memory by accumulator and stores result in accumulator.
 The program terminates with the HALT command
 Goal: Utilize multiplication opcode
+
+Actor: Programmer
+System:
+Programmer runs the program.
+Program asks the user for input files.
+Program encounters opcode '32'
+Program divides accumulator by number in memory and stores result in accumulator.
+If the number in memory is zero, the program stops and throws a ZeroDivisionError.
+The program terminates with the HALT command
+Goal: Utilize division opcode
