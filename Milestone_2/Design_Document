@@ -83,15 +83,14 @@ System:
 4: Continue program until halt (43) ends program
 Goal: Work with UVSim Simulator system 
 
-I still need to edit:
 Actor: Programmer
 System: 
 Programmer starts program
 Programmer selects input file
-The program will scan the inputs into a string, making sure it encounters ‘43’, if it does not the program notifies the user that the command HALT must be included for the program to properly run.
-The programmer fixes their inputs, and resubmits the code with a HALT input.
-The Program contains a HALT, the program runs normally and terminates.
-Goal: Do not let the program run without HALT.
+Program encounters an opcode of 40
+Program branches to specified area in memory.
+Program continues until encountering a HALT
+Goal: Branch to a specific part in memory.
 
 Actor: Programmer
 System:
@@ -116,9 +115,7 @@ Actor: Programmer
 System:
 Programmer runs the program.
 Program asks the user for input files.
-Program does not detect any errors, and begins to execute the inputs.
-The program detects a BRANCH input, and BRANCHES to location in memory via the pointer variable.
-Program executes code stored in this memory.
-Program read a HALT statement, but the BRANCH skipped over it.
-Program terminates and notifies the user that the HALT was unreachable.
-Goal: Catch run-time errors in cases where HALT is present.
+Program encounters opcode '33'
+Program multiplies number in memory by accumulator and stores result in accumulator.
+The program terminates with the HALT command
+Goal: Utilize multiplication opcode
