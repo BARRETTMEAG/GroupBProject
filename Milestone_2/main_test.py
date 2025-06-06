@@ -157,12 +157,10 @@ def test_improper_word_in_file():
         sim.load_program('Test4.txt') #Test4.txt contains "TEST\n"
 
 # --- Branch to a specific part in memory ---
-def test_branch():
-    cpu = CPU()
-    memory = [0] * 100
-    cpu.execute(4005, memory)
+def test_branch(setup):
+    cpu, memory = setup
+    cpu.execute(4005, memory.memory)
     assert cpu.program_counter == 5
-"""In Spreadsheet: Name: Test Branch Pointer, Definition: Test that branch moves pointer to specific part in memory, Use Case: Branch to specific part in memory, Input: 4005, Output: Counter = 5, Succeeded: Counter = 5"""
 
 def test_branch_executes_until_halt():
     sim = UVSim()
@@ -171,18 +169,15 @@ def test_branch_executes_until_halt():
     sim.run()
     assert sim.cpu.halted is True
     assert sim.cpu.program_counter == 1
-"""In Spreadsheet: Successful execution after branch, Definition: Test that program continues executing after branching to specific part in memory, Use Case: Branch to specific part in memory, Inpt: 4001, Output: True, Succeeded: Program Halted"""
 
 # --- Print Hello World ---
-def test_write_prints_hello_world(monkeypatch, capsys):
-    cpu = CPU()
-    mem = Memory()
+def test_write_prints_hello_world(monkeypatch, capsys, setup):
+    cpu, mem = setup
     mem.write(50, "Hello World")
     monkeypatch.setattr("builtins.input", lambda _: "")
     cpu.execute(1150, mem.memory)  # WRITE 50
     captured = capsys.readouterr()
     assert "Hello World" in captured.out
-"""In Spreadsheet: Name: Print Hello World, Definition: Test that program can perform basic programming projects such as printing 'Hello World', Use Case: Print Hello World, Input: Hello World, Output: Hello World, Succeeded: Prints Hello World to Console"""
 
 def test_input_then_print_hello_world(monkeypatch, capsys):
     sim = UVSim()
@@ -199,9 +194,8 @@ def test_input_then_print_hello_world(monkeypatch, capsys):
     assert sim.cpu.halted is True
 
 # --- Load and Store Data to memory and accumulator ---
-def test_load_and_store_value():
-    cpu = CPU()
-    mem = Memory()
+def test_load_and_store_value(setup):
+    cpu, mem = setup
     mem.write(10, 42)
     cpu.execute(2010, mem.memory)  # LOAD from address 10
     assert cpu.accumulator == 42
@@ -213,19 +207,32 @@ def test_invalid_address_raises():
     with pytest.raises(IndexError):
         mem.write(200, 99)
 
-# --- Utilize Mutliplication Opcode ---
-def test_multiply_two_values():
-    cpu = CPU()
-    mem = Memory()
+# --- Utilize Multiplication Opcode ---
+def test_multiply_two_values(setup):
+    cpu, mem = setup
     cpu.accumulator = 6
     mem.write(7, 7)
     cpu.execute(3307, mem.memory)  # MULTIPLY by memory[7]
     assert cpu.accumulator == 42
 
-def test_multiplication_with_zero():
-    cpu = CPU()
-    mem = Memory()
+def test_multiplication_with_zero(setup):
+    cpu, mem = setup
     cpu.accumulator = 0
     mem.write(20, 5)
     cpu.execute(3320, mem.memory)  # MULTIPLY by memory[20]
     assert cpu.accumulator == 0
+
+# --- Utilize Division Opcode ---
+def test_divide_two_values(setup):
+    cpu, mem = setup
+    cpu.accumulator = 42
+    mem.write(5, 7)
+    cpu.execute(3205, mem.memory)  # DIVIDE by memory[5]
+    assert cpu.accumulator == 6
+
+def test_division_by_zero(setup):
+    cpu, mem = setup
+    cpu.accumulator = 10
+    mem.write(3, 0)
+    with pytest.raises(ZeroDivisionError):
+        cpu.execute(3203, mem.memory)  # DIVIDE by memory[3]
