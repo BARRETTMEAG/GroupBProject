@@ -7,3 +7,11 @@ Milestone 2
 Meeting date: Sat, May 24, 2025 @ 5:00pm
 In attendance: Collin, Tess, Meaghan, Erich
 Discussed our proposed schedule for milestone scrum. Will have another meeting Thursday @ 9pm to follow up with project requirements. Each team member will be working on 4 use cases for the design document, which we will complete by Thursday 5/29 or earlier. Each team member will also watch the week 4 video, as well as familiarize with github and version control practices so that our main is updated smoothly. On Thursday, we will meet together to go over the prototype requirements and starter code, where responsibilities will be divided between team members. 
+
+Meeting date: Thurs, May 29, 2025 @ 9:00pm
+In attendance: Collin, Tess, Meaghan, Erich
+Discussed our vision for the prototype code, the initial development will be split into two teams of two: memory development consisting of Collin and Erich, and operation development consisting of Meaghan and Tess. We will first work on getting our initial tests to pass before coding in the more complex operations.
+
+Meeting date: Saturday, May 31, 2025 @ 5:00 pm
+In attendance: Collin, Tess, Erich
+Discussed code that we worked on, and have created. We currently do not have editing privileges to the github repo, put my working prototype into docs, and if we don’t get privileges by tomorrow morning, then I will create a new repo, send out access codes and push my prototype to main. We will be finished with the code by Wednesday so that no edits will be made on the due date. The README still needs to be completed as well, which will be delegated to whoever finishes their coding responsibilities first. 
