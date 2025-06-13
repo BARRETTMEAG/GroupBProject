@@ -4,6 +4,7 @@ class Memory:
 
     def write(self, address, value):
         if 0 <= address < 100:
+            self.memory[address] = value
             if -9999 <= value <= 9999:  # Ensure value is a signed four-digit integer
                 self.memory[address] = value
             else:
