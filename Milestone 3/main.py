@@ -101,6 +101,7 @@ class UVSim:
                             instruction = convert_to_int(word)
                             if instruction is False:
                                 raise ValueError("This file contains an invalid word at memory [" + str(i) + "]. Words must be signed 4-digit integers (no spaces).")
+                            self.memory.write(i, instruction)
                         break
                     word += char
                     if char.isspace(): # Program encounters whitespace
