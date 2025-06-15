@@ -1,6 +1,6 @@
 (User Story) “As a <role>, I want to <do something>, So that <big picture need or problem is solved>”
 
-As a client, I want to develop a software simulator called UVSim for computer science students to learn machine language and computer architecture, so that students can execute their machine language programs on the simulator.
+As an instructor, I want to provide CS students with a machine language simulation tool, so that they can experiment with low-level programming concepts without needing physical hardware.
 
 As a CS student, I want to run my BasicML program in the UVSim so I can understand how assembly-level instructions interact with CPU and memory.
 
