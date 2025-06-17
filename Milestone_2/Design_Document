@@ -7,120 +7,116 @@ As a CS student, I want to run my BasicML program in the UVSim so I can understa
 
 Use Cases:
 
+File Selection and Validation
 Actor: Program user
-System:
-User launches program
-Program prompts user for a file
-User enters a file name into the console
-Program checks file name syntax, and if correct (and existing), reads the file into memory
-If the program name is incorrect or does not exist, the appropriate error is raised, and user is prompted for a new file name
-Program checks each word in the file for a word of length 5 (including sign), raising an error if a value is incorrect
-Goal: Retrieve a file necessary for program operation
+Steps:
+•	Launching program.
+•	Prompt user for file name.
+•	Validate syntax and existence.
+•	Loading file into memory or repeat prompt on error.
+Goal: Retrieve a file necessary for execution.
 
-Actor: Program
-System: 
-Program encounters an “operation code” of 40 (the first two digits in the word)
-Program jumps to the specified memory location, and continues operation as normal
-Goal: Skip over subsequent operations to a specific location in memory
+Parse and Storing Instructions
+Actor: Instruction parsing system (Program)
+Steps:
+•	Reading a 4-digit number from the input file.
+•	Separate into opcode (first 2 digits) and operand (last 2 digits).
+•	Storing the instruction at the appropriate memory location.
+Goal: Properly store instruction components.
 
-Actor: Program user
-System: 
-Program encounters an opcode of 10
-Program prompts the user to enter a value
-User enters the value and presses 'enter'
-Program inserts the value given by the user into the operand of the instruction
-Program continues to the next instruction
-Goal: Input a value from the keyboard into memory
+Branch to Memory Location (Opcode 40)
+Actor: Instruction execution system (Program)
+Steps:
+•	Detect opcode 40.
+•	Reading the operand to determine jump target.
+•	Updating program counter to target location.
+•	Continue execution from that location.
+Goal: Change execution flow to a specific memory location.
 
-Actor: Program
-System:
-Program encounters an opcode of 43
-Program stops execution
-Program displays a message to the console
-Why the program stopped (HALT instruction encountered)
-At which memory location the instruction was encountered
-The value present in the accumulator register
-Ex. “HALT instruction encountered at memory location 67.  Accumulator value: 5555.”
-Goal: Display program results in the console
+Conditional Branch if Zero (Opcode 41)
+Actor: Instruction execution system (Program)
+Steps:
+•	Detect opcode 41.
+•	Check if the accumulator is zero.
+•	If true, update program counter to operand value(s).
+•	Otherwise, continue with the next instruction.
+Goal: Conditionally branch based on the zero accumulator.
 
-Actor: Client,
-System:
-1: Set software parameters
-2: Get updates from company
-3: Test product and work out bugs
-4: Have students test final product
-Goal: UVSim Software simulator for students
+Conditional Branch if Negative (Opcode 42)
+Actor: Instruction execution system (Program)
+Steps:
+•	Detect opcode 42.
+•	Check if the accumulator is negative.
+•	If true, set program counter to operand value(s).
+•	Else, proceed to next instruction.
+Goal: Conditionally branch based on negative accumulator.
 
-Actor: Management,
-System:
-1: Assemble the production team and set boundaries
-2: Assign tasks and deadlines
-3: Check the progression and help when needed
-4: Communicate with client about progression
-5: Test Production
-Goal: Completed Production of UVSim for Client
+Input from User (Opcode 10)
+Actor: Instruction execution system (Program)
+Steps:
+•	Detect opcode 10.
+•	Prompt user to enter a value.
+•	Validating the input as a 4-digit number (signed).
+•	Storing value(s) in memory at the operand address.
+Goal: Accept keyboard input during program execution.
 
-Actor: Programmer,
-System: 
-1: Select language for UVSim
-2: Format language to Start program
-3: Program code to separate the four-digit decimals in two parts: location numbers and memory numbers
-4: Change the four-digit number according to input or output
-5: Halt at 43 (end program)
-Goal: Create a functional UVSim simulator system 
+Output to Console (Opcode 11)
+Actor: Instruction execution system (Program)
+Steps:
+•	Detect opcode 11.
+•	Reading value(s) from the memory location specified by operand.
+•	Output the value(s) to the console.
+Goal: Display output from memory to the user.
 
-Actor: Student
-System:
-1: Start program with 00
-2: Enter four-digit decimals into user-interface system
-3: Watch input and output
-4: Continue program until halt (43) ends program
-Goal: Work with UVSim Simulator system 
+Loading Value(s) into the Accumulator (Opcode 20)
+Actor: Instruction execution system (Program)
+Steps:
+•	Detect opcode 20.
+•	Reading value(s) from memory at operand address.
+•	Storing value(s) in the accumulator.
+Goal: Load value from memory into accumulator.
 
-Actor: Programmer
-System: 
-Programmer starts program
-Programmer selects input file
-Program encounters an opcode of 40
-Program branches to specified area in memory.
-Program continues until encountering a HALT
-Goal: Branch to a specific part in memory.
+Storing Accumulator to Memory (Opcode 21)
+Actor: Instruction execution system (Program)
+Steps:
+•	Detect opcode 21.
+•	Reading value(s) from the accumulator.
+•	Storing value(s) in the memory at operand address.
+Goal: Save value(s) from the accumulator to memory.
 
-Actor: Programmer
-System:
-The programmer submits their series of commands to the program.
-The Program reads through all of the commands and confirms no errors and checks that there is a HALT. If there is no HALT the program cannot run and tells the user so in the console.
-If there is an error the Program notifies the user of the error and the line that produced it.
-The program prints out “Hello World” in the console.
-The program terminates with the HALT command.
-Goal: Print Hello World to console.
+Add Memory to the Accumulator (Opcode 30)
+Actor: Instruction execution system (Program)
+Steps:
+•	Detect opcode 30.
+•	Reading value(s) from memory at operand location.
+•	Adding value(s) to the accumulator.
+•	Storing result back in the accumulator.
+Goal: Perform addition using memory and accumulator values.
 
-Actor: Programmer
-System:
-Programmer runs the program.
-Program asks user for input file
-User submits the path for the file
-The program runs through the inputs, and notifies the user of an error if one is encountered
-The program executes the inputs and loads data to memory.
-The program then stores data into accumulator.
-The program terminates with the HALT command.
-Goal: Load and store data.
+Subtract Memory from Accumulator (Opcode 31)
+Actor: Instruction execution system (Program)
+Steps:
+•	Detect opcode 31.
+•	Reading value(s) from memory.
+•	Subtracting value(s) from the accumulator.
+•	Storing result in the accumulator.
+Goal: Perform subtraction using memory and accumulator values.
 
-Actor: Programmer
-System:
-Programmer runs the program.
-Program asks the user for input files.
-Program encounters opcode '33'
-Program multiplies number in memory by accumulator and stores result in accumulator.
-The program terminates with the HALT command
-Goal: Utilize multiplication opcode
+Multiply with Accumulator (Opcode 33)
+Actor: Instruction execution system (Program)
+Steps:
+•	Detect opcode 33.
+•	Reading value(s) from memory.
+•	Multiplying value(s) by the accumulator value.
+•	Storing result in the accumulator.
+Goal: Perform multiplication
 
-Actor: Programmer
-System:
-Programmer runs the program.
-Program asks the user for input files.
-Program encounters opcode '32'
-Program divides accumulator by number in memory and stores result in accumulator.
-If the number in memory is zero, the program stops and throws a ZeroDivisionError.
-The program terminates with the HALT command
-Goal: Utilize division opcode
+Divide Accumulator by Memory (Opcode 32)
+Actor: Instruction execution system (Program)
+Steps:
+•	Detect opcode 32.
+•	Reading value(s) from memory at operand address.
+•	If the value(s) is zero, raise ZeroDivisionError and halt execution.
+•	Else, divide the accumulator by memory value.
+•	Storing result in the accumulator.
+Goal: Perform division and handle divide-by-zero error
