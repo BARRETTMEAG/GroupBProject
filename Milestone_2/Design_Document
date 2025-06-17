@@ -10,113 +10,113 @@ Use Cases:
 File Selection and Validation
 Actor: Program user
 Steps:
-•	Launching program.
-•	Prompt user for file name.
-•	Validate syntax and existence.
-•	Loading file into memory or repeat prompt on error.
-Goal: Retrieve a file necessary for execution.
+•	Launching program
+•	Prompt user for file name
+•	Validate syntax and existence
+•	Loading file into memory or repeat prompt on error
+Goal: Retrieve a file necessary for execution
 
 Parse and Storing Instructions
 Actor: Instruction parsing system (Program)
 Steps:
-•	Reading a 4-digit number from the input file.
-•	Separate into opcode (first 2 digits) and operand (last 2 digits).
-•	Storing the instruction at the appropriate memory location.
-Goal: Properly store instruction components.
+•	Reading a 4-digit number from the input file
+•	Separate into opcode (first 2 digits) and operand (last 2 digits)
+•	Storing the instruction at the appropriate memory location
+Goal: Properly store instruction components
 
 Branch to Memory Location (Opcode 40)
 Actor: Instruction execution system (Program)
 Steps:
-•	Detect opcode 40.
-•	Reading the operand to determine jump target.
-•	Updating program counter to target location.
-•	Continue execution from that location.
-Goal: Change execution flow to a specific memory location.
+•	Detect opcode 40
+•	Reading the operand to determine jump target
+•	Updating program counter to target location
+•	Continue execution from that location
+Goal: Change execution flow to a specific memory location
 
 Conditional Branch if Zero (Opcode 41)
 Actor: Instruction execution system (Program)
 Steps:
-•	Detect opcode 41.
-•	Check if the accumulator is zero.
-•	If true, update program counter to operand value(s).
-•	Otherwise, continue with the next instruction.
-Goal: Conditionally branch based on the zero accumulator.
+•	Detect opcode 41
+•	Check if the accumulator is zero
+•	If true, update program counter to operand value(s)
+•	Otherwise, continue with the next instruction
+Goal: Conditionally branch based on the zero accumulator
 
 Conditional Branch if Negative (Opcode 42)
 Actor: Instruction execution system (Program)
 Steps:
-•	Detect opcode 42.
-•	Check if the accumulator is negative.
-•	If true, set program counter to operand value(s).
-•	Else, proceed to next instruction.
-Goal: Conditionally branch based on negative accumulator.
+•	Detect opcode 42
+•	Check if the accumulator is negative
+•	If true, set program counter to operand value(s)
+•	Else, proceed to next instruction
+Goal: Conditionally branch based on negative accumulator
 
 Input from User (Opcode 10)
 Actor: Instruction execution system (Program)
 Steps:
-•	Detect opcode 10.
-•	Prompt user to enter a value.
-•	Validating the input as a 4-digit number (signed).
-•	Storing value(s) in memory at the operand address.
-Goal: Accept keyboard input during program execution.
+•	Detect opcode 10
+•	Prompt user to enter a value
+•	Validating the input as a 4-digit number (signed)
+•	Storing value(s) in memory at the operand address
+Goal: Accept keyboard input during program execution
 
 Output to Console (Opcode 11)
 Actor: Instruction execution system (Program)
 Steps:
-•	Detect opcode 11.
-•	Reading value(s) from the memory location specified by operand.
-•	Output the value(s) to the console.
-Goal: Display output from memory to the user.
+•	Detect opcode 11
+•	Reading value(s) from the memory location specified by operand
+•	Output the value(s) to the console
+Goal: Display output from memory to the user
 
 Loading Value(s) into the Accumulator (Opcode 20)
 Actor: Instruction execution system (Program)
 Steps:
-•	Detect opcode 20.
-•	Reading value(s) from memory at operand address.
-•	Storing value(s) in the accumulator.
-Goal: Load value from memory into accumulator.
+•	Detect opcode 20
+•	Reading value(s) from memory at operand address
+•	Storing value(s) in the accumulator
+Goal: Load value from memory into accumulator
 
 Storing Accumulator to Memory (Opcode 21)
 Actor: Instruction execution system (Program)
 Steps:
-•	Detect opcode 21.
-•	Reading value(s) from the accumulator.
-•	Storing value(s) in the memory at operand address.
-Goal: Save value(s) from the accumulator to memory.
+•	Detect opcode 21
+•	Reading value(s) from the accumulator
+•	Storing value(s) in the memory at operand address
+Goal: Save value(s) from the accumulator to memory
 
 Add Memory to the Accumulator (Opcode 30)
 Actor: Instruction execution system (Program)
 Steps:
-•	Detect opcode 30.
-•	Reading value(s) from memory at operand location.
-•	Adding value(s) to the accumulator.
-•	Storing result back in the accumulator.
-Goal: Perform addition using memory and accumulator values.
+•	Detect opcode 30
+•	Reading value(s) from memory at operand location
+•	Adding value(s) to the accumulator
+•	Storing result back in the accumulator
+Goal: Perform addition using memory and accumulator values
 
 Subtract Memory from Accumulator (Opcode 31)
 Actor: Instruction execution system (Program)
 Steps:
-•	Detect opcode 31.
-•	Reading value(s) from memory.
-•	Subtracting value(s) from the accumulator.
-•	Storing result in the accumulator.
-Goal: Perform subtraction using memory and accumulator values.
+•	Detect opcode 31
+•	Reading value(s) from memory
+•	Subtracting value(s) from the accumulator
+•	Storing result in the accumulator
+Goal: Perform subtraction using memory and accumulator values
 
 Multiply with Accumulator (Opcode 33)
 Actor: Instruction execution system (Program)
 Steps:
-•	Detect opcode 33.
-•	Reading value(s) from memory.
-•	Multiplying value(s) by the accumulator value.
-•	Storing result in the accumulator.
+•	Detect opcode 33
+•	Reading value(s) from memory
+•	Multiplying value(s) by the accumulator value
+•	Storing result in the accumulator
 Goal: Perform multiplication
 
 Divide Accumulator by Memory (Opcode 32)
 Actor: Instruction execution system (Program)
 Steps:
-•	Detect opcode 32.
-•	Reading value(s) from memory at operand address.
-•	If the value(s) is zero, raise ZeroDivisionError and halt execution.
-•	Else, divide the accumulator by memory value.
-•	Storing result in the accumulator.
+•	Detect opcode 32
+•	Reading value(s) from memory at operand address
+•	If the value(s) is zero, raise ZeroDivisionError and halt execution
+•	Else, divide the accumulator by memory value
+•	Storing result in the accumulator
 Goal: Perform division and handle divide-by-zero error
