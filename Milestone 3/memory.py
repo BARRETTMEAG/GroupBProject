@@ -1,6 +1,8 @@
 class Memory:
     def __init__(self):
         self.memory = [0] * 100  # Initialize memory with 100 words (00-99)
+        self.read_callback = None
+        self.waiting_for_input =  False
 
     def write(self, address, value):
         if 0 <= address < 100:
