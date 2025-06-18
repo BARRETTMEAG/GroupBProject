@@ -100,20 +100,23 @@ class UVSimGUI:
         input_entry = tk.Entry(popup)
         input_entry.pack()
 
+        result = {"value": None}
+
         def submit():
             value = input_entry.get()
             try:
                 int_value = int(value)
-                if not (-9999 <= int_value <= 9999):
+                if not isinstance(int_value, int):
                     raise ValueError
-                self.sim.memory.write(operand, int_value)
+                result["value"] = int_value
                 popup.destroy()
-                self.sim.memory.waiting_for_input = False
-                self.step_through_program()
             except ValueError:
-                messagebox.showerror("Invalid Input", "Enter a signed 4-digit integer.")
+                messagebox.showerror("Invalid Input", "Enter an integer.")
 
         tk.Button(popup, text="Submit", command=submit).pack(pady=10)
+
+        self.root.wait_window(popup)
+        return result["value"]
 
     def update_memory_display(self):
         for i in range(10):
