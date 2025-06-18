@@ -19,11 +19,17 @@ class CPU:
         operand = instruction % 100
 
         if opcode == 10:  # READ = Read a word from the keyboard into a specific location in memory.
-            value = input("Enter the value to be stored: ")
+            memory.waiting_for_input = True
+            if hasattr(memory, 'read_callback') and memory.read_callback:
+                value = memory.read_callback(operand)
+            else:
+                value = input("Enter the value to be stored: ")
+                
             intValue = convert_to_int(value)
             if intValue is False:
                 raise ValueError("Invalid entry! Please enter signed 4-digit integers only...")
             memory.write(operand, intValue)
+            memory.waiting_for_input = False
 
         elif opcode == 11:  # WRITE = Write a word from a specific location in memory to screen.
             output = int(memory.read(operand))
