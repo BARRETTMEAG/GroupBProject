@@ -2,17 +2,22 @@ README describes how this UVSim software simulator works.
 
 This program is written in python and is available through github. 
 
-Additionally, the program uses the `pytest` library for testing. You can install it using the following command:
+## The program uses the `tkinter` library for testing. You can install it using the following command:
+
+import tkinter as tk
+from tkinter import filedialog, messagebox, ttk
 
 ## How to Launch the Application
 1. Open a terminal or command prompt.
-2. Navigate to the directory containing the `main.py` file.
-3. Run the program using the following command:
+2. Navigate to the directory containing the `uvsim_gui.py` file.
+3. Run the program using the following command: python3 uvsim_gui.py
 
 ## How to Use the Application
-1. When prompted, enter the name of the input file containing your BasicML program. Ensure the file is in the same directory as the `main.py` file or provide the full path to the file.
+1. After launching application, submit a file using the "Load Program File" button.
+2. Hit the "Run Program" button.
 2. The program will load the instructions from the file into memory and execute them sequentially.
-3. Follow any prompts displayed on the console during execution (e.g., entering values for `READ` operations).
+2. When prompted a new pop up window, enter in your input for a READ opcode and click "submit"
+3. After application is processed, the user can resubmit a new file.
 
 ## Input File Format
 - The input file should contain BasicML instructions, one per line.
@@ -20,7 +25,7 @@ Additionally, the program uses the `pytest` library for testing. You can install
 - Ensure the file includes a `HALT` instruction (`+4300`) to terminate the program.
 
 ## Testing the Application
-To run the unit tests for the application, use the following command:
+To test the application submit the file to be tested. If no error occurs the application should run smoothly. If an error occurs the instructions will stop being read and the user will be notified of the specific error caught in the .txt file.
 
 When entering a four-digit number (+1235), the number is separated by the first two digits and the last two digits. The 12 or whatever number is known as the memory and the 35 would be the memory location portion of the code.
 
