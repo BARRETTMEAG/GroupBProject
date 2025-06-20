@@ -139,8 +139,4 @@ class UVSimGUI:
         self.output_text.delete("1.0", tk.END)
         self.output_text.configure(state='disabled')
 
-if __name__ == "__main__":
-    root = tk.Tk()
-    app = UVSimGUI(root)
-    root.mainloop()
 
