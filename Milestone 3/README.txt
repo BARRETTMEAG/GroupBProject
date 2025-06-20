@@ -2,10 +2,7 @@ README describes how this UVSim software simulator works.
 
 This program is written in python and is available through github. 
 
-## The program uses the `tkinter` library for testing. You can install it using the following command:
-
-import tkinter as tk
-from tkinter import filedialog, messagebox, ttk
+## The program uses the `tkinter` library for GUI. Tkinter is typically included in Python and does not need to be installed.
 
 ## How to Launch the Application
 1. Open a terminal or command prompt.
@@ -15,9 +12,10 @@ from tkinter import filedialog, messagebox, ttk
 ## How to Use the Application
 1. After launching application, submit a file using the "Load Program File" button.
 2. Hit the "Run Program" button.
-2. The program will load the instructions from the file into memory and execute them sequentially.
-2. When prompted a new pop up window, enter in your input for a READ opcode and click "submit"
-3. After application is processed, the user can resubmit a new file.
+3. The program will load the instructions from the file into memory and execute them sequentially.
+4. When prompted a new pop up window, enter in your input for a READ opcode and click "submit"
+5. After application is processed, the user can resubmit a new file.
+6. Click the red X in the top left corner to terminate the program and close window.
 
 ## Input File Format
 - The input file should contain BasicML instructions, one per line.
