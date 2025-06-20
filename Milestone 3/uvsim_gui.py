@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 from memory import Memory
-from main import UVSim
+from uvsim import UVSim
 from convert import Convert
 import builtins
 
