@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 from memory import Memory
 from main import UVSim
+from convert import Convert
 import builtins
 
 class UVSimGUI:
@@ -99,23 +100,23 @@ class UVSimGUI:
         tk.Label(popup, text="Enter the value to be stored:").pack(pady=10)
         input_entry = tk.Entry(popup)
         input_entry.pack()
+        input_entry.focus_set()  # Ensure the input field is focused
 
         result = {"value": None}
 
         def submit():
             value = input_entry.get()
             try:
-                int_value = int(value)
-                if not isinstance(int_value, int):
-                    raise ValueError
+                int_value = Convert.convert_to_int(value)  # Validate input as an integer
                 result["value"] = int_value
-                popup.destroy()
+                self.sim.memory.write(operand, int_value)  # Store the value in memory
+                popup.destroy()  # Close the popup
             except ValueError:
-                messagebox.showerror("Invalid Input", "Enter an integer.")
+                messagebox.showerror("Invalid Input", "Enter an integer.")  # Show error message
 
         tk.Button(popup, text="Submit", command=submit).pack(pady=10)
 
-        self.root.wait_window(popup)
+        self.root.wait_window(popup)  # Wait for the popup to close
         return result["value"]
 
     def update_memory_display(self):
