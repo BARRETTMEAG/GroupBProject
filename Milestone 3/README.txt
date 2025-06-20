@@ -10,7 +10,7 @@ from tkinter import filedialog, messagebox, ttk
 ## How to Launch the Application
 1. Open a terminal or command prompt.
 2. Navigate to the directory containing the `uvsim_gui.py` file.
-3. Run the program using the following command: python3 uvsim_gui.py
+3. Run the program using the following command: python3 main.py
 
 ## How to Use the Application
 1. After launching application, submit a file using the "Load Program File" button.
