@@ -28,10 +28,10 @@ Functional Requirements
 
 14. The system shall display the contents of memory and accumulator after execution if debug mode is enabled.
 
-15. The system shall support logging or output of execution steps, user inputs, and error states (optional feature).
+15. The system shall support logging or output of execution steps, user inputs, and error states.
 
  Non-Functional Requirements
-   1. The system shall be compatible with Python 3.8 and above, and run on major operating systems (Windows, Linux, macOS).
+   1. The system shall be compatible with Python 3.8 and above, and run on major operating systems (Windows and macOS).
 
    2. The system shall execute a program with up to 100 instructions in under 3 seconds on standard hardware.
 
