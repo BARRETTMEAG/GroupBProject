@@ -1,0 +1,255 @@
+﻿Meaghan’s SRS 
+Functional Requirements
+1. The system shall read program instructions from a .txt file.
+
+2. The system shall store valid instructions in sequential memory addresses (0 to 99).
+
+3. The system shall verify each instruction is a signed 4-digit integer with an optional + or - prefix.
+
+4. The system shall reject malformed instructions (such as: too long, too short, containing special characters like *, etc.).
+
+5. The system shall prompt the user to re-enter a file path if the initial file is missing or invalid.
+
+6. The system shall parse and execute instructions based on opcode, supporting read, write, load, store, add, subtract, multiply, divide, branch, branchneg, branchzero, and halt.
+
+7. The system shall raise an error if a division by zero is attempted.
+
+8. The system shall halt execution immediately upon encountering the +4300 (HALT) instruction.
+
+9. The system shall wrap accumulator values outside the valid range (±9999) using modulo 10000.
+
+10. The system shall clear memory before loading a new program.
+
+11. The system shall support branching and conditional execution using opcodes 40–42.
+
+12. The system shall prevent out-of-bounds memory access (only address 00 to 99).
+
+13. The system shall display helpful error messages for invalid operations or memory access violations.
+
+14. The system shall display the contents of memory and accumulator after execution if debug mode is enabled.
+
+15. The system shall support logging or output of execution steps, user inputs, and error states (optional feature).
+
+ Non-Functional Requirements
+   1. The system shall be compatible with Python 3.8 and above, and run on major operating systems (Windows, Linux, macOS).
+
+   2. The system shall execute a program with up to 100 instructions in under 3 seconds on standard hardware.
+
+   3. The system shall follow a modular code structure (CPU, Memory, File Loader) and be maintainable for future enhancements.
+
+
+
+
+
+
+
+
+
+
+
+
+
+Collin’s SRS
+
+Functional Requirements 
+      1. The system shall provide a graphical user interface (GUI) that allows users to load .txt instruction files.
+
+      2. The system shall visually display the 100-word memory as a grid or table in the GUI.
+
+      3. The system shall allow users to manually edit memory contents through the GUI before execution.
+
+      4. The system shall provide a “step execution” mode allowing users to execute one instruction at a time.
+
+      5. The system shall display the current value of the accumulator and instruction counter during execution.
+
+      6. The system shall visually highlight the currently executing instruction in the memory display.
+
+      7. The system shall allow users to pause, resume, and reset program execution from the GUI.
+
+      8. The system shall prevent users from loading programs that exceed the 100-instruction memory limit.
+
+      9. The system shall validate that instructions use only supported opcodes (10–43) and correct formatting.
+
+      10. The system shall allow users to enter BasicML instructions manually in the GUI and store them in memory.
+
+      11. The system shall log user interactions and system messages in a scrollable console or output pane.
+
+      12. The system shall detect and report if a program enters an infinite loop (e.g., >1000 steps without HALT).
+
+      13. The system shall support saving the current memory and accumulator state to a file.
+
+      14. The system shall allow loading previously saved memory states from a file.
+
+      15. The system shall include a help dialog or tutorial guiding students through BasicML and UVSim features.
+Non-Functional Requirements
+         1. The system shall provide a graphical interface implemented using a cross-platform GUI toolkit (Tkinter).
+
+         2. The system shall be designed for usability by students with minimal prior programming experience, following basic UI/UX principles (e.g., labels, buttons, consistent layout).
+
+         3. The system shall maintain reliable performance and responsiveness while executing programs with up to 1000 steps in debug or step mode
+
+
+________________
+
+
+Erich
+Functional Requirements
+The system shall display a ‘load program file’ button.
+The system shall allow users to open a text file when the ‘load program file’ button is clicked.
+The system shall validate the text file chosen by the user.
+The system shall raise an error if one or more words in the text file are not signed four-digit integers.
+The system shall load the contents of the chosen file into program memory.
+The system shall display the contents in memory to the GUI.
+The system shall display a ‘run program’ button.
+The program shall begin operation at the first location in memory when the ‘run program’ button is clicked.
+The system shall open a user-input popup when a read command is encountered in the text file.
+The system shall display a field for the user to enter a value in the input popup when a read command is encountered.
+The system shall read the contents of the input field in the input popup into memory when the user clicks the ‘submit’ button in the popup window.
+The system shall raise an error if a user-entered value is not a signed four-digit integer.
+The system shall display an accumulator value.
+The system shall display write commands to an output field.
+The system shall end program execution when a HALT command is encountered.
+Non-Functional Requirements
+The system shall be built using tiered architecture.
+The graphical user interface shall be simple and intuitive.
+The system shall avoid crashes.
+
+
+
+
+
+
+
+
+
+
+
+
+Tess
+Functional Requirements:
+            1. The system shall allow the user to select and load a .txt file from the file system using a file chooser.
+            2. The system shall display the contents of memory in a scrollable table format.
+            3. The system shall allow the user to input values when the running program requests input (READ).
+            4. The system shall display output in a separate text area or output panel when the program executes a WRITE instruction.
+            5. The system shall display the current value of the accumulator and program counter as the program runs.
+            6. The system shall handle invalid instructions by displaying an appropriate error message.
+            7. The system shall reset memory and accumulator when a new file is loaded in.
+            8. The system shall prevent the user from running the program if no file is loaded.
+            9. The system shall validate .txt files before loading to ensure only valid instructions are present.
+            10. The system shall initialize the accumulator and program counter to 0 on program startup.
+            11. The system shall allow the user to close the application in the GUI.
+            12. The system shall display an error message if the loaded file contains invalid characters or formatting.
+            13. The system shall initialize all memory cells to 0 when the application starts.
+            14. The system shall display a memory, confirming when a program is successfully loaded.
+            15. The system shall keep running even after encountering an error with the submitted file.
+Non-Functional Requirements:
+            1. The system shall keep running until closed, and does not stop running after reading in a txt file.
+            2. The system shall make it clear to the user if the file has been correctly processed (ran without error).
+            3. The system shall make it clear to the user if the file chosen isn’t of the correct file type.
+
+
+
+
+Group 1: Tess & Erich
+Functional Requirements
+            1. The system shall display a ‘load program file’ button.
+            2. The system shall allow users to open a text file when the ‘load program file’ button is clicked.
+            3. The system shall raise an error if one or more words in the text file are not signed four-digit integers.
+            4. The system shall load the contents of the chosen file into program memory.
+            5. The system shall display a ‘run program’ button.
+            6. The program shall begin operation at the first location in memory when the ‘run program’ button is clicked.
+            7. The system shall open a user-input popup when a read command is encountered in the text file.
+            8. The system shall read the contents of the input field in the input popup into memory when the user clicks the ‘submit’ button in the popup window.
+            9. The system shall raise an error if a user-entered value is not a signed four-digit integer.
+            10. The system shall display an accumulator value.
+            11. The system shall end program execution when a HALT command is encountered.
+            12. The system shall display the contents of memory in a scrollable table format.
+            13. The system shall display output in a separate text area when the program executes a WRITE instruction.
+            14. The system shall reset memory and accumulator when a new file is loaded in.
+            15. The system shall prevent the user from running the program if no file is loaded.
+            16. The system shall validate .txt files before loading to ensure only valid instructions are present.
+            17. The system shall initialize the accumulator to 0 on program startup.
+            18. The system shall allow the user to close the application in the GUI.
+            19. The system shall initialize all memory cells to 0 when the application starts.
+            20. The system shall display a memory, confirming when a program is successfully loaded.
+Non-Functional Requirements
+            1. The system shall be built using tiered architecture.
+            2. The system shall avoid crashes.
+            3. The system shall keep running until closed, and does not stop running after reading in a txt file.
+            4. The system shall make it clear to the user if the file chosen isn’t of the correct file type.
+
+
+Group 2: Meaghan & Collin
+Functional Requirements
+            1. Program instructions shall be read from a text file with user re-entry upon failure.
+            2. Instructions shall be verified as valid signed 4-digit integers, stored from address 00 to 99.
+            3. Malformed instructions (such as: invalid characters and/or incorrect length) shall be rejected.
+            4. Memory shall be cleared before loading new instructions.
+            5. Execution shall support opcodes 10–43 (such as: READ, WRITE, LOAD, HALT).
+            6. Execution halts on opcode 4300 and raises an error on division by zero.
+            7. Accumulator values exceeding ±9999 shall wrap using modulo 10000.
+            8. Memory access shall be restricted to valid address space (00–99).
+            9. A GUI shall allow loading, editing, and visualizing memory and accumulator.
+            10. The GUI shall support manual entry, step execution, and execution control (pause, resume, reset).
+            11. Current instruction, accumulator, and counter shall be visually highlighted.
+            12. Instruction formatting shall be validated against allowed opcodes (10–43).
+            13. The system shall display helpful error messages and support logging (optional).
+            14. Infinite loops ( such as: >1000 steps without HALT) shall be detected and reported.
+            15. Users shall be able to save and load memory/accumulator states, with help documentation included.
+Non-Functional Requirements
+            1. Python 3.8+ compatible across Windows, macOS, and Linux.
+            2. GUI shall be built using a cross-platform toolkit (Tkinter).
+            3. Program execution shall remain responsive (≤ 3 seconds for 100 instructions, 1000 steps max).
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Final Merge
+Functional:
+            1. The system shall display a ‘load program file’ button.
+            2. The system shall allow users to open a text file when the ‘load program file’ button is clicked.
+            3. The system shall raise an error if one or more words in the text file are not signed four-digit in
+            4. The system shall load the contents of the chosen file into program memory.
+            5. The system shall display a ‘run program’ button.
+            6. The program shall begin operation at the first location in memory when the ‘run program’ button is clicked.
+            7. The system shall open a user-input popup when a read command is encountered in the text file.
+            8. The system shall read the contents of the input field in the input popup into memory when the user clicks the ‘submit’ button in the popup window.
+            9. The system shall display an accumulator value.
+            10. The system shall end program execution when a HALT command is encountered.
+            11. The system shall display the contents of memory in a scrollable table format.
+            12. The system shall display output in a separate text area when the program executes a WRITE instruction.
+            13. The system shall reset the accumulator to 0 when a new file is loaded in.
+            14. The system shall prevent the user from running the program if no file is loaded.
+            15. The system shall allow the user to close the application in the GUI.
+            16. The system shall initialize all memory cells to 0 when a new file is loaded in.
+            17. The system shall display a memory, confirming when a program is successfully loaded.
+            18. The system shall have program instructions shall be read from a text file with user re-entry upon failure.
+            19. The system shall reject malformed instructions (such as: invalid characters and/or incorrect length).
+            20. The system’s execution shall support opcodes 10–43 (such as: READ, WRITE, LOAD, HALT).
+            21. The system shall raise an error on division by zero.
+            22. The system’s accumulator values exceeding ±9999 shall wrap using modulo 10000.
+            23. The system’s memory access shall be restricted to valid address space (00–99).
+            24. The system shall display helpful error messages.
+            25. The system’s users shall be able to save and load memory/accumulator states, with README documentation included.
+Non functional:
+            1. The system shall be built using tiered architecture.
+            2. The system shall avoid crashes.
+            3. The system shall make it clear to the user if the file chosen isn’t of the correct file type.
+            4. The system shall be compatible with Python 3+ across Windows and macOS
+            5. The system shall use a toolkit to build a GUI.
+            6. The system shall execute the program to remain responsive (≤ 3 seconds for 100 instructions).
