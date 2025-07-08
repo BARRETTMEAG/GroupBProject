@@ -68,12 +68,14 @@ class UVSimGUI:
                 self.update_memory_display()
                 self.accumulator_var.set(str(self.sim.cpu.accumulator))
                 self.clear_output()
+                self.loaded_file_path = file_path
             except Exception as e:
                 messagebox.showerror("Load Error", str(e))
 
     def save_file(self):
-        file_path = filedialog.asksaveasfilename(defaultextension=".txt",
-                                                 filetypes=[("Text files", "*.txt")])
+        if not self.sync_entries_to_memory():
+            return
+        file_path = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text files", "*.txt")])
         if file_path:
             try:
                 with open(file_path, "w") as f:
@@ -93,14 +95,35 @@ class UVSimGUI:
         except Exception:
             messagebox.showerror("Invalid Input", f"Invalid value at memory [{index}]")
 
+    def sync_entries_to_memory(self):
+        for idx, entry in enumerate(self.memory_entries):
+            value = entry.get()
+            try:
+                int_val = Convert.convert_to_int(value)
+                if int_val is False:
+                    raise ValueError
+                self.sim.memory.write(idx, int_val)
+            except Exception:
+                messagebox.showerror("Invalid Input", f"Invalid value at memory [{idx}] during sync.")
+                return False
+        return True
+    
     def run_program(self):
+        if not self.sync_entries_to_memory():
+            return
+
+        self.sim.cpu.program_counter = 0
+        self.sim.cpu.halted = False
+        self.sim.cpu.accumulator = 0
+
         self.run_button.config(state='disabled')
         try:
             self.sim.memory.read_callback = self.show_read_popup
             self.step_through_program()
         except Exception as e:
             messagebox.showerror("Execution Error", str(e))
-        self.run_button.config(state='normal')
+        finally:
+            self.run_button.config(state='normal')
 
     def step_through_program(self):
         original_print = builtins.print
