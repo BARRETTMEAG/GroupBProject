@@ -1,0 +1,53 @@
+SRS
+
+Functional:
+
+1. The system shall display a ‘load program file’ button.
+2. The system GUI shall exhibit a primary color, used as the main background color.  The primary color shall default to UVU green (Hex# 4C721D).
+3. The system GUI shall exhibit a secondary color, used for clickable buttons and text.  The secondary color shall default to white (Hex# FFFFFF).
+4. The system colors shall be user-configurable.
+5. The system shall allow users to open a text file when the ‘load program file’ button is clicked.  The text file shall be imported via a user-chosen directory.
+6. The system shall raise an error if one or more words in the text file are not signed four-digit integers
+7. The system shall load the contents of the chosen file into program memory, with user re-entry upon failure.
+8. The system shall allow a user to make changes to their file inside the GUI.
+9. The system GUI shall allow a user to save their file to a user-chosen directory.
+10. The program shall begin operation at the first location in memory when the ‘run program’ button is clicked.
+11. The system’s memory access shall be restricted to valid address space (00–99).
+12. The system shall display a ‘run program’ button, allowing an open file to be executed.
+13. The system shall open a user-input popup when a read command is encountered in the text file.
+14. The system shall read the contents of the input field in the input popup into memory when the user clicks the ‘submit’ button in the popup window.
+15. The system’s execution shall support various opcodes within the range 10–43:
+15a. Opcode 10: Read a word from the keyboard into a specific location in memory
+15b. Opcode 11: Write a word from a specific location in memory to screen.
+15c. Opcode 20: Load a word from a specific location in memory into the accumulator.
+15d. Opcode 21: Store a word from the accumulator into a specific location in memory.
+15e. Opcode 30: Add a word from a specific location in memory to the word in the accumulator (leave the result in the accumulator)
+15f. Opcode 31: Subtract a word from a specific location in memory from the word in the accumulator (leave the result in the accumulator)
+15g. Opcode 32: Divide the word in the accumulator by a word from a specific location in memory (leave the result in the accumulator).
+15h. Opcode 33: multiply a word from a specific location in memory to the word in the accumulator (leave the result in the accumulator).
+15i. Opcode 40: Branch to a specific location in memory
+15j. Opcode 41: Branch to a specific location in memory if the accumulator is negative.
+15k. Opcode 42: Branch to a specific location in memory if the accumulator is zero.
+15l. Opcode 43: HALT: stop the program
+16. The system shall display an accumulator value, with the accumulator being a memory register with the same size and functions of the other memory registers.
+17. The system shall reset the accumulator to 0 when a new file is loaded in.
+18. The system shall end program execution when a HALT command is encountered.
+19. The system shall display the contents of memory in a scrollable table format, confirming when a program is successfully loaded.
+20. The system shall display output in a separate text area when the program executes a WRITE instruction.
+21. The system shall prevent the user from running the program if no file is loaded.
+22. The system shall allow the user to close the application in the GUI.
+23. The system shall initialize all memory cells to 0 when a new file is loaded in.
+24. The system shall reject malformed instructions (such as: invalid characters and/or incorrect length).
+25. The system shall raise an error on division by zero.
+26. The system’s accumulator values exceeding ±9999 shall wrap using modulo 10000.
+27. The system shall display error messages coinciding with errors that might be encountered (ex. bad words in a file, missing words, trying to access out-of-range memory)
+28. The system shall notify the user when a value entered into memory is too large and therefore truncated.
+
+Non functional:
+
+1. The system shall be built using tiered architecture.
+2. The system shall avoid crashes.
+3. The system shall make it clear to the user if the file chosen isn’t of the correct file type.
+4. The system shall be compatible with Python 3+.
+5. The system shall be compatible with Windows and macOS.
+6. The system shall execute the program to remain responsive (≤ 3 seconds for 100 instructions).
