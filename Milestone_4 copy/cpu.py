@@ -1,4 +1,3 @@
-import os
 from memory import Memory
 from convert import Convert
 
