@@ -3,6 +3,7 @@ from tkinter import filedialog, messagebox, ttk
 from memory import Memory
 from uvsim import UVSim
 from convert import Convert
+from load import Load_Program
 import builtins
 from color_config import ColorConfig
 
@@ -10,6 +11,7 @@ class UVSimGUI:
     def __init__(self, root):
         self.root = root
         self.root.title("UVSim")
+        self.load = Load_Program()
         self.sim = UVSim()
         self.output_lines = []
         self.colors = ColorConfig()
@@ -62,8 +64,9 @@ class UVSimGUI:
         file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
         if file_path:
             try:
-                self.sim = UVSim()
-                self.sim.load_program(file_path)
+                self.load = Load_Program()
+                self.load.load_program(file_path)
+                self.sim = UVSim(memory = self.load.memory)
                 self.sim.memory.read_callback = self.show_read_popup
                 self.update_memory_display()
                 self.accumulator_var.set(str(self.sim.cpu.accumulator))
