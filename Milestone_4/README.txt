@@ -15,7 +15,14 @@ This program is written in python and is available through github.
 3. The program will load the instructions from the file into memory and execute them sequentially.
 4. When prompted a new pop up window, enter in your input for a READ opcode and click "submit"
 5. After application is processed, the user can resubmit a new file.
-6. Click the red X in the top left corner to terminate the program and close window.
+6. Save file using "Save Program File" button.
+7. Click the red circle in the top left corner to terminate the program and close window.
+
+## How to Change the Color
+1. Go to file location of program.
+2. Open color_config.py
+3. Find self.primary and self.off values.
+4. Edit in the hex code of desired colors into the two values, make sure to place a '#' character before every color value, and to enclose entire value including the '#' in quotations.
 
 ## Input File Format
 - The input file should contain BasicML instructions, one per line.
