@@ -1,0 +1,48 @@
+Milestone 4 Meeting Log:
+  Meeting Date: Tues, June 24, 2025
+    In Attendance: Tess, Meaghan, Erich, Collin
+    Discussed: To-do list and requirements of Milestone 4. This week will be a chiller week due to the end of block 1 as well as the upcoming midterm.
+  Next meeting: Tuesday, July 1, 2025
+  Meeting Date: Tuesday, July 1, 2025
+    In Attendance: Tess, Meaghan, Erich, Collin
+      Discussed: Task Allocation
+        Meaghan: Color coding code.
+        Erich: 4 and 6 from the to-do list.
+        Collin: 5 for revisions, 3 and 4 from milestones.
+        Tess: 1, 2 and 3 for revisions.
+  Next meeting: Tuesday, July 8 2025
+  Meeting Date: Tuesday, July 8 2025
+    In Attendance: Tess, Meaghan, Erich, Collin
+      Discussed: Completed tasks and remaining tasks in the to-do list.
+        Meaghan: Finishing up color coding code.
+        Erich: SRS
+        Collin: Finishing 5 for revisions, UML modifications
+        Tess: Wireframe, README, finishing up 2 in milestone requirements and bug testing.
+
+Our To-Do List:
+Revisions to Previous Milestone (10 points):
+
+Fix the ‘Run Program’ button so that it always runs and does not require the “Load file” button to be pressed before.
+Fix WireFrame to reflect current application layout. (Will be subject to change)
+Informing the user that their input values had issues and let them know what you are doing to their inputs in memory.  Just add some notifications here and you'll be good.
+Moving the file loading code out of the UVSim class into a separate Loader class.
+“per the Single Responsibility Principle that we'll be learning about in class shortly.  The idea would be if you switched to getting the program data from a web service or database instead of a text file, would/should your UVSim class care?  Ideally it would be a 'black box' that you would get the data from your DataLoader and put it in memory without knowing or caring where it actually came from.”
+Design a MemoryRegister class in addition to your current Memory class in lieu of an array of ints.-Collin
+SRS: “Remember the key principle is that if you were handed this doc as a developer (who was not involved with the original design) would you know what to do to code it, or would you have a lot of follow-up questions?  For instance F.4 and F.6 refer to program memory, although the size of memory space isn't defined until F.23 so that should probably be earlier in the list for clarity.  F.9 is the first mention of the accumulator, a good spot to define exactly what it is (another memory register of the same size and mechanism as the other memory registers). F.11 and F.17 seem to be the same.  F.4 and F.18 also seem to be redundant. F.20 is fine here, although in practice you'd want to identify each function code individually (for tracking and testing), either through separate requirements or sub-bullet-points (20a, 20b, 20c, etc).  You'd also want this one higher in the list because you've already started talking about some of the specific function codes earlier. F.24 "helpful" is an opinion word. NF.4 is fine, although Python requirements and OS requirements should be separate.  You can delete NF.5, since if you're not going to require a specific toolkit for the GUI, that outside developer reading this doesn't learn anything from it -- they'll use whatever toolkit or library they need to run the GUI.
+
+Milestone 4 Requirements (50 points):
+
+User accessible color scheme: The current interface should be 'branded' with the appropriate color scheme, with the default being the UVU colors.   Furthermore, the color scheme should be configurable by the user without needing to recompile and reinstall the app.   Set up a system where the user can configure a color scheme (one primary color, and one 'off-color') and have the app (either instantly or upon restart) start using that custom color scheme.  (You can do this inside the app somewhere, or through a configuration text file containing the color info that is read on startup).   You can decide whether to use RGB or Hex values for the colors -- UVU uses a dark green that's RGB (76,114,29) / Hex# 4C721D with white (255,255,255 / #FFFFFF) as the off-color.  You can decide how and where to add the color to your interface, making sure that it is still readable and usable.  Text can still be any color (and don't worry if your user chooses a color scheme that makes your text color unreadable by contrast -- that's their problem!  Just make sure your text is readable with the default color scheme above).
+Make the ‘off-color’ show in the app.
+Allow text/code editing in GUI: The request now is that your application supports loading in the file first to the GUI and allowing the user to view, inspect, and edit the function commands and the order before execution.  The user should be able (through the GUI) to view, add, modify, and delete the function codes and data values.   This includes cut, copy, and paste actions as well as make individual manual changes to the code sequences. (NOTE that the max size of the data -- 100 entries covering registers #00 - #99 -- is the same, so decide how you might deal with situations where the user adds or pastes entries that exceed the max data size.)
+Fix “'UVSim' object has no attribute 'read_callback” Error
+Fix 'int' object has no attribute 'strip' Error
+Make sure changes are actually saved when the file is saved.
+Make sure memory changes actually work.
+Flexible Loading: Load files from any user-specified folder (not just a fixed default system folder).  Make sure your app allows the user to load files from any directory.
+File Saving: Save files through your app.  Make sure your app also allows the user to save the current file (possibly under a different name) to the file system, also in a user-chosen directory. 
+UML
+README
+
+
+
