@@ -2,7 +2,9 @@ README describes how this UVSim software simulator works.
 
 This program is written in python and is available through github. 
 
-## The program uses the `tkinter` library for GUI. Tkinter is typically included in Python and does not need to be installed.
+The application simulates the BasicML instruction set with full support for file editing, color customization, and multi-file execution. It now includes enhancements for handling both legacy and extended instruction formats, user-friendly file editing, and customizable themes.
+
+## The program uses the `tkinter` library for GUI. Tkinter is included in most Python distributions and does not need to be installed separately.
 
 ## How to Launch the Application
 1. Open a terminal or command prompt.
@@ -12,25 +14,35 @@ This program is written in python and is available through github.
 ## How to Use the Application
 1. Click Load Program File to open a BasicML program file.
 2. The application supports two file formats:
-	- Legacy 4-digit files (up to 100 lines)
-	- Extended 6-digit files (up to 250 lines)
-3. Edit program instructions or data values directly in the interface after loading.
-4. Click Run Program to execute the loaded program.
-5. When the program requests input (for READ instructions), enter values in the popup and click submit.
+	- 4-digit format (up to 100 lines, legacy)
+	- 6-digit format (up to 250 lines, extended)
+3. After loading:
+	- Edit memory instructions directly in the interface
+	- Modify, cut, copy, paste, or delete any lines
+	- Register cells are labeled (000–249) to reduce confusion
+4. Press Run Program to begin execution.
+5. If a READ operation is encountered, input values in the popup window.
 6. You can save your work at any time with the Save Program File button.
-7. Open multiple files simultaneously in tabs to edit and switch between programs.
-8. Execution locks editing and switching until the program finishes or is stopped.
+7. Open multiple files in tabs, switch and edit between them.
+8. Only one file can run at a time. Execution must complete or stop before switching.
 9. Click the red circle (top-left) to close the application.
 
 ## How to Change the Color
 1. Go to file location of program.
 2. Open color_config.py
 3. Find self.primary and self.off values.
+	{
+  	"primary": "#4C721D", (UVU Green)
+ 	 "off": "#FFFFFF" (White)
+	}
 4. Edit in the hex code of desired colors into the two values, make sure to place a '#' character before every color value, and to enclose entire value including the '#' in quotations.
+	Default UVU Colors:
+		Primary: #4C721D (UVU Green)
+		Off-color: #FFFFFF (White)
 
 ## Input File Format
 - The input file should contain BasicML instructions, one per line.
-- Each instruction must be a signed 5-digit integer (e.g., `+1020` or `-4321`).
+- Each instruction must be a signed 4-digit format: e.g., +1020 (READ to address 20) or a 6-digit format: e.g., +010020 (READ to address 020)
 - Ensure the file includes a `HALT` instruction (`+4300`) to terminate the program.
 
 ## Testing the Application
