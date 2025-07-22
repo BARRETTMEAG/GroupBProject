@@ -61,15 +61,22 @@ class UVSimGUI:
         self.mem_inner.bind("<Configure>", lambda e: self.mem_canvas.configure(scrollregion=self.mem_canvas.bbox("all")))
 
         for i in range(16):
-            for j in range(16):
-                idx = i * 16 + j
+            tk.Label(self.mem_inner, text=f"{i:X}", bg=self.colors.primary, fg=self.colors.off, width=6).grid(row=0, column=i+1)
+        for col in range(16):
+            for row in range(16):
+                idx = row + col * 16  # Column-wise increment
+                if idx >= 250:
+                    break
+
+                # Address label (in a separate column before each entry)
+                label = tk.Label(self.mem_inner, text=f"{idx:03}", width=4, anchor="e", bg=self.colors.primary, fg=self.colors.off)
+                label.grid(row=row, column=col * 2, padx=(2, 0), pady=1)
+
+                # Memory entry field
                 entry = tk.Entry(self.mem_inner, width=10)
-                entry.grid(row=j, column=i)
-                if idx < 250:
-                    entry.insert(0, "+000000")
-                else:
-                    entry.insert(0, "------")
-                    entry.config(state='disabled')
+                entry.grid(row=row, column=col * 2 + 1, padx=(0, 5), pady=1)
+
+                entry.insert(0, "+000000")
                 entry.bind("<FocusOut>", lambda e, idx=idx: self.save_memory_entry(idx, e.widget.get()))
                 self.memory_entries.append(entry)
 
