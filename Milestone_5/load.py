@@ -1,32 +1,71 @@
-from memory import Memory
+import os
 from convert import Convert
-from file_converter import FileConverter
+from memory import Memory
 
-class Load_Program:
+
+class Load_Program():
+
     def __init__(self):
         self.memory = Memory()
 
-    def detect_format(self, lines):
-        stripped = [ln.strip() for ln in lines if ln.strip()]
-        if all(len(ln) == 4 for ln in stripped) and len(stripped) <= 100:
-            return '4'
-        elif all(len(ln) == 6 for ln in stripped) and len(stripped) <= 250:
-            return '6'
-        else:
-            raise ValueError("Unknown or mixed file format")
-
     def load_program(self, filename):
-        lines = open(filename, "r").readlines()
-        fmt = self.detect_format(lines)
-        for idx, ln in enumerate(lines):
-            if idx >= 250:
-                raise ValueError("File exceeds max 250 lines")
-            word = ln.strip()
-            if not word:
-                continue
-            if fmt == '4':
-                word = FileConverter.convert_4_to_6(word)
-            val = Convert.convert_to_int(word)
-            if val is False:
-                raise ValueError(f"Invalid word at memory[{idx:03d}]")
-            self.memory.write(idx, val)
+        i = 0
+        word = ""
+        if os.path.isfile(filename):
+            with open(filename, "r") as file:
+                while True:
+                    char = file.read(1)
+                    if not char:
+                        if word and word != '\n' and word != '\t':
+
+                            if '+' in word or '-' in word:
+                                if len(word) > 8:
+                                    raise ValueError(f"Improper word length at memory [{i}]")
+                                else:
+                                    instruction = Convert.convert_to_int(word)
+                            else:
+                                if len(word) > 7:
+                                    raise ValueError(f"Improper word length at memory [{i}]")
+                                else:
+                                    instruction = Convert.convert_to_int(word)
+
+                            if instruction is False:
+                                raise ValueError(f"Invalid word at memory [{i}]")
+                            
+                            #check instruction length
+
+                            self.memory.write(i, instruction)
+                        break
+                    word += char
+                    if char.isspace():
+                        if char == '\n':
+                            if not word.strip():
+                                raise ValueError(f"Empty word at memory [{i}]")
+                            
+                            if '+' in word or '-' in word:
+                                if len(word) > 8:
+                                    raise ValueError(f"Improper word length at memory [{i}]")
+                                else:
+                                    instruction = Convert.convert_to_int(word)
+                            else:
+                                if len(word) > 7:
+                                    raise ValueError(f"Improper word length at memory [{i}]")
+                                else:
+                                    instruction = Convert.convert_to_int(word)
+                                    
+                            if instruction is False:
+                                raise ValueError(f"Invalid word at memory [{i}]")
+                            
+                            #check instruction length
+
+                            self.memory.write(i, instruction)
+                            i += 1
+
+                            if i == 250:
+                                raise IndexError(f"File exceeds maximum allowable size of 250 lines!")
+
+                            word = ""
+                            continue
+                        raise ValueError(f"Invalid space found in word at memory [{i}]")
+        else:
+            raise FileNotFoundError(f"File '{filename}' not found.")
