@@ -1,0 +1,47 @@
+{
+    "primary": "#4C721D",
+    "off": "FFFFF",
+
+    "__examples__": {
+        "uvu_dark_green": "#4C721D",
+        "uvu_white": "#FFFFFF",
+        "uvu_gray": "#B7B7B7",
+        "uvu_black": "#000000",
+        "uvu_light_green": "#8CC63F",
+
+        "red_alert": "#FF4C4C",
+        "soft_red": "#FF9999",
+        "forest_green": "#228B22",
+        "sky_blue": "#87CEEB",
+        "light_blue": "#ADD8E6",
+        "midnight_blue": "#191970",
+        "deep_purple": "#6A0DAD",
+        "lavender": "#E6E6FA",
+        "sunset_orange": "#FF4500",
+        "gold": "#FFD700",
+        "silver": "#C0C0C0",
+        "bronze": "#CD7F32",
+        "dark_brown": "#654321",
+        "beige": "#F5F5DC",
+        "off_white": "#FAFAFA",
+        "charcoal": "#36454F",
+
+        "pink": "#FFC0CB",
+        "light_pink": "#FFB6C1",
+        "peach": "#FFE5B4",
+        "mint": "#98FF98",
+        "teal": "#008080",
+        "cyan": "#00FFFF",
+        "aqua": "#00FFFF",
+        "magenta": "#FF00FF",
+        "lime": "#00FF00",
+        "coral": "#FF7F50",
+        "crimson": "#DC143C",
+        "plum": "#DDA0DD",
+        "navy": "#000080",
+        "royal_blue": "#4169E1",
+        "orange": "#FFA500",
+        "yellow": "#FFFF00",
+        "olive": "#808000"
+    }
+}
