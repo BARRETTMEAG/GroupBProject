@@ -8,11 +8,13 @@ class MemoryRegister:
         if -999999 <= value <= 999999:
             self.value = value
         else:
-            self.value = value % 1000000  # Wrap to six-digit range
+            self.value = value % 1000000  # Wrap into valid range (keeps negatives)
 
     def get(self):
         return self.value
 
+    def __repr__(self):
+        return f"MemoryRegister({self.value})"
 class Memory:
     def __init__(self):
         self.memory = [MemoryRegister() for _ in range(250)]
@@ -20,13 +22,13 @@ class Memory:
         self.waiting_for_input = False
 
     def write(self, address, value):
-        if not (0 <= address < 250):
-            raise IndexError("Memory address out of range 000–249")
-        if not isinstance(value, int):
-            raise ValueError("MemoryRegister must store an integer.")
-        self.memory[address].set(value)
+        if 0 <= address < 250:
+            self.memory[address].set(value)
+        else:
+            raise IndexError("Memory address out of range")
 
     def read(self, address):
-        if not (0 <= address < 250):
-            raise IndexError("Memory address out of range 000–249")
-        return self.memory[address].get()
+        if 0 <= address < 250:
+            return self.memory[address].get()
+        else:
+            raise IndexError("Memory address out of range")
