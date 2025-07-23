@@ -1,112 +1,3 @@
-Meeting date: Sat, May 17, 2025 @ 5:00pm
-In attendance: Collin, Tess, Meaghan, Erich
-  Today, we met for the first time and discussed the project launch details.  The details are in a separate “Project Launch Details” document.  We decided on a scrum master schedule, a regular meeting time for our meetings, and we talked a little bit about our education/coding background.  We decided on Github for source control, and we will use a shared Google document to record meeting notes and keep a list of tasks that need to be completed for each milestone/sprint.
-
-Milestone 2
-Meeting date: Sat, May 24, 2025 @ 5:00pm
-In attendance: Collin, Tess, Meaghan, Erich
-  Discussed our proposed schedule for milestone scrum. Will have another meeting Thursday @ 9pm to follow up with project requirements. Each team member will be working on 4 use cases for the design document, which we will complete by Thursday 5/29 or earlier. Each team member will also watch the week 4 video, as well as familiarize with github and version control practices so that our main is updated smoothly. On Thursday, we will meet together to go over the prototype requirements and starter code, where responsibilities will be divided between team members. 
-
-Meeting date: Thurs, May 29, 2025 @ 9:00pm
-In attendance: Collin, Tess, Meaghan, Erich
-  Discussed our vision for the prototype code, the initial development will be split into two teams of two: memory development consisting of Collin and Erich, and operation development consisting of Meaghan and Tess. We will first work on getting our initial tests to pass before coding in the more complex operations.
-
-Meeting date: Saturday, May 31, 2025 @ 5:00 pm
-In attendance: Collin, Tess, Erich
-  Discussed code that we worked on, and have created. We currently do not have editing privileges to the github repo, put my working prototype into docs, and if we don’t get privileges by tomorrow morning, then I will create a new repo, send out access codes and push my prototype to main. We will be finished with the code by Wednesday so that no edits will be made on the due date. The README still needs to be completed as well, which will be delegated to whoever finishes their coding responsibilities first.
-
-Milestone 3 meeting log
-Meeting date: Sat, June 7, 2025
-In attendance: Erich, Collin
-  Discussed the feedback for Milestone 2
-   We are planning to do a follow-up meeting that hopefully everyone can make it to, Thursday the 12th @ 9pm.
-   Collin agreed to start working on use case fixes in our design document
-   Erich is going to run more tests with our code and try out the other text files we didn’t have access to before to try to get our code more solid.
-   Updated the ‘backlog’ tab in this document for TODO tasks for the next milestone
-   Collin and Erich prefer using print statements in the code itself for testing rather than dealing with pytest, I will email Professor Burtt and see if this is an okay way of doing it.  Need to get feedback from Meaghan and Tess on this.
-   Meaghan, if you see this and are able/willing, would you be able to fix our user story issues Professor Burtt mentioned in our feedback?  See the task backlog for details.
-   Tess, can you look into the branching issues mentioned, and see if you can expand our branching to be more robust?
-   EVERYONE: Begin learning about GUI’s in python (design, build, etc…)  This looks like the biggest part of milestone 3, so if you are unfamiliar with GUI’s make sure to do some research and we will discuss next week.
-
-Meeting Date: Thurs, June 12, 2025
-In attendance: Meaghan, Tess, Erich
-  Followed up on previous assignments
-   Code should be fixed and working correctly now, and the test files all perform correctly
-   Branch operations should be working, Tess is planning to double check that the branches all work properly.
-   Meaghan is finishing up user story fixes
-   After talking to Professor about the unit tests, he strongly suggests using Pytest because it looks good on resumes and will make our lives easier down the line.  So we are planning to use this going forward, need to get input from Collin on this.
-   Decided on ‘Tkinter’ for our GUI implementation
-   TODO for Saturday:
-      Everyone: download and test the code with the test files.  Do some of your own testing to make sure the program is working as expected.  If not, make changes as you see fit.
-      Tess: Build a wireframe of our GUI and share it with us so we can discuss
-      Meaghan: Start class definition document (see milestone 3 instructions for details)
-      Collin: Use case fixes if not finished (from milestone 2 feedback)
-      Everyone: Learn about Tkinter, used for creating GUI’s.  We need to discuss this as a group on Saturday.
-
-Meeting Date: Sat, June 14, 2025
-In attendance: Meaghan, Collin, Erich
-Next meeting: Tuesday, June 17 @ 9pm
-  By Tuesday:
-      Everyone: Create individual SRS documents
-      Collin and Meaghan: Create GUI
-      Erich: Update readme and get clarification from professor on class def. Document
-  If not finished: use case fixes and user story fixes
-  Tuesday:
-      Divide into groups and merge SRS documents for the first time
-      Discuss GUI progress 
-  Tues-Fri:
-    Tess and Erich: implement GUI with current code
-    Merge SRS documents the second time
-    Finalize readme and class definitions documents
-    Double check to-do’s from last milestone to make sure those are fixed
-
-Meeting Date: Tue, June 17, 2025
-In attendance: Meaghan, Collin, Erich, Tess
-  Discussed final task assignments
-    Collin: add names to use cases, separate classes into their own files, any GUI edit considerations
-    Tess: update readme, update wireframe, any GUI edit considerations
-    Meaghan: update UML for the class and function descriptions
-    Erich: gather together all documents and code for submission
-  Everyone: Finish first SRS merge with partner
-Group 1: Erich & Tess
-Group 2: Collin & Meaghan
-Next meeting: Thursday, June 19 @ 9pm
-Final meeting to merge our final SRS document
-
-Meeting Date: Thurs, June 19, 2025
-In attendance: Meaghan, Erich, Tess, Collin
-  Discussed last minute tasks to finish up
-    Collin: Use cases
-    Meaghan: UML
-    Tess: Readme
-    Erich: Enable program to run from main.py
-    All tasks will be completed and deliverables will be handed in by Friday @ 11:59pm
-  Completed the final merge of our SRS document
-Next meeting: Tuesday, June 24 @ 9pm
-
-Milestone 4 Meeting Log:
-Meeting Date: Tues, June 24, 2025
-In Attendance: Tess, Meaghan, Erich, Collin
-  Discussed: To-do list and requirements of Milestone 4. This week will be a chiller week due to the end of block 1 as well as the upcoming midterm.
-Next meeting: Tuesday, July 1, 2025
-
-Meeting Date: Tuesday, July 1, 2025
-In Attendance: Tess, Meaghan, Erich, Collin
-  Discussed: Task Allocation
-    Meaghan: Color coding code.
-    Erich: 4 and 6 from the to-do list.
-    Collin: 5 for revisions, 3 and 4 from milestones.
-    Tess: 1, 2 and 3 for revisions.
-Next meeting: Tuesday, July 8 2025
-
-Meeting Date: Tuesday, July 8 2025
-In Attendance: Tess, Meaghan, Erich, Collin
-  Discussed: Completed tasks and remaining tasks in the to-do list.
-    Meaghan: Finishing up color coding code.
-    Erich: SRS
-    Collin: Finishing 5 for revisions, UML modifications
-    Tess: Wireframe, README, finishing up 2 in milestone requirements and bug testing.
-
 Milestone 5 Meeting: July 15
 In Attendance: Tess, Erich, Meaghan
   Discussed: Break down of To-do list for Milestone 5. 
@@ -127,3 +18,8 @@ In Attendance: Meaghan, Collin
     Meaghan talked about use cases being a pain. 
     Collin talked about how he is just working on his code and needs to implement everything, but so far no problems.
 Next meeting Tuesday July 22
+
+Milestone 5 Meeting: July 22
+In Attendance:
+  Discussed:
+Next meeting 
