@@ -1,6 +1,6 @@
 {
     "primary": "#4C721D",
-    "off": "FFFFF",
+    "off": "#FFFFFF",
 
     "__examples__": {
         "uvu_dark_green": "#4C721D",
