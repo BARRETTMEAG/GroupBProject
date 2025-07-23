@@ -16,6 +16,7 @@ class UVSimGUI:
         self.output_lines = []
         self.colors = ColorConfig()
         self.memory_entries = []
+        self.file_loaded = False
 
         self.root.configure(bg=self.colors.primary)
         self.build_widgets()
@@ -85,6 +86,9 @@ class UVSimGUI:
         self.output_text.pack(pady=5)
 
     def load_file(self):
+        if self.file_loaded:
+            self.open_file_in_new_window()
+            return
         file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
         if file_path:
             try:
@@ -96,6 +100,7 @@ class UVSimGUI:
                 self.accumulator_var.set(str(self.sim.cpu.accumulator))
                 self.clear_output()
                 self.loaded_file_path = file_path
+                self.file_loaded = True
             except Exception as e:
                 messagebox.showerror("Load Error", str(e))
 
@@ -106,9 +111,11 @@ class UVSimGUI:
         if file_path:
             try:
                 with open(file_path, "w") as f:
+                    lines = []
                     for i in range(250):
                         val = self.sim.memory.read(i)
-                        f.write(f"{val:+07d}\n")
+                        lines.append(f"{val:+07d}")
+                    f.write("\n".join(lines))
                 messagebox.showinfo("Success", f"Program saved to {file_path}")
             except Exception as e:
                 messagebox.showerror("Save Error", str(e))
@@ -228,3 +235,22 @@ class UVSimGUI:
         self.output_text.configure(state='normal')
         self.output_text.delete("1.0", tk.END)
         self.output_text.configure(state='disabled')
+
+    def open_file_in_new_window(self):
+        file_path = filedialog.askopenfilename(filetypes=[("Text files", "*.txt")])
+        if file_path:
+            try:
+                new_root = tk.Toplevel(self.root)
+                new_gui = UVSimGUI(new_root)
+                new_gui.load = Load_Program()
+                new_gui.load.load_program(file_path)
+                new_gui.sim = UVSim(memory=new_gui.load.memory)
+                new_gui.sim.memory.read_callback = new_gui.show_read_popup
+                new_gui.update_memory_display()
+                new_gui.accumulator_var.set(str(new_gui.sim.cpu.accumulator))
+                new_gui.clear_output()
+                new_gui.loaded_file_path = file_path
+                new_gui.file_loaded = True
+                new_root.title("UVSim")
+            except Exception as e:
+                messagebox.showerror("Load Error", f"Could not load {file_path}:\n{str(e)}")
