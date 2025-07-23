@@ -20,6 +20,10 @@ In Attendance: Meaghan, Collin
 Next meeting Tuesday July 22
 
 Milestone 5 Meeting: July 22
-In Attendance:
-  Discussed:
-Next meeting 
+  Discussed: Follow up of To-do list for Milestone 5. 
+    Talking about dealing with errors for color and memory. Making sure to upload changes. 
+    Erich is going to be working on #3 of the new stuff
+    Tess is going to keep working on the color error handling
+    Collin is going to review Erich’s code to help with his own
+    Meaghan is going to double check the use cases 
+Next meeting Thursday July 24
