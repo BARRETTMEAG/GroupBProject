@@ -32,10 +32,14 @@ This program is written in Python and is available through GitHub.
 
 ## How to Change the Color
 1. Go to file location of program.
-2. Open color_config.py.
-3. Find self.primary and self.off values.
-4. Edit in the hex code of desired colors into the two values.
-5. Make sure to place a # character before every color value, and enclose the value (including the #) in quotation marks.
+2. Open colors.json.
+3. Find primary and off values.
+4. Edit in the hex code of desired colors into either Primary or Off values.
+5. Hex code format - make sure the hex code stays within quotations. 
+      - Hex code starts with a # and is followed by 6 character. Characters range from 0-9 and A-F.
+5. Run program as usual.
+6. If program does not appear to have changed colors, refer to the error printed to the terminal. Make sure the hex code follow the format above and in the given
+examples in colors.json.
 
 Example:
 self.primary = "#4C721D"
