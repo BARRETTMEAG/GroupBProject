@@ -1,0 +1,53 @@
+SRS
+
+Functional:
+
+1. The system shall display a ‘load program file’ button.
+2. The system GUI shall exhibit a primary color, used as the main background color. The primary color shall default to UVU green (Hex# 4C721D).
+3. The system GUI shall exhibit a secondary color, used for clickable buttons and text. The secondary color shall default to white (Hex# FFFFFF).
+4. The system colors shall be user-configurable via a configuration file or in-app option without recompilation.
+5. The system shall allow users to open a text file when the ‘load program file’ button is clicked. The text file shall be imported via a user-chosen directory.
+6. The system shall raise an error if one or more words in the text file are not valid 4- or 6-digit signed integers.
+7. The system shall load the contents of the chosen file into editable memory via the GUI, allowing user review before execution.
+8. The system shall allow a user to make changes to their file inside the GUI including cut, copy, paste, add, delete, and edit operations.
+9. The system GUI shall allow a user to save their file to a user-chosen directory with optional renaming.
+10. The program shall begin operation at the first location in memory (000) when the ‘run program’ button is clicked.
+11. The system’s memory access shall be restricted to valid address space (000–249).
+12. The system shall display a ‘run program’ button, allowing an open file to be executed, while disabling execution of other open files.
+13. The system shall open a user-input popup when a READ command (010XXX) is encountered in the program.
+14. The system shall read the contents of the input field in the input popup into memory when the user clicks the ‘submit’ button in the popup window.
+15. The system’s execution shall support various 6-digit opcodes within the range 010–043:
+    15a. Opcode 010: Read a word from the keyboard into a specific location in memory
+    15b. Opcode 011: Write a word from a specific location in memory to screen
+    15c. Opcode 020: Load a word from a specific location in memory into the accumulator
+    15d. Opcode 021: Store a word from the accumulator into a specific location in memory
+    15e. Opcode 030: Add a word from a specific location in memory to the word in the accumulator
+    15f. Opcode 031: Subtract a word from a specific location in memory from the word in the accumulator
+    15g. Opcode 032: Divide the word in the accumulator by a word from a specific location in memory
+    15h. Opcode 033: Multiply a word from a specific location in memory to the word in the accumulator
+    15i. Opcode 040: Branch to a specific location in memory
+    15j. Opcode 041: Branch to a specific location in memory if the accumulator is negative
+    15k. Opcode 042: Branch to a specific location in memory if the accumulator is zero
+    15l. Opcode 043: HALT: stop the program
+16. The system shall display an accumulator value, with the accumulator being a memory register with the same size and functions of the other memory registers.
+17. The system shall reset the accumulator to 0 and memory to all zeros when a new file is loaded in.
+18. The system shall end program execution when a HALT command (043XXX) is encountered.
+19. The system shall display the contents of memory (up to 250 entries) in a scrollable, editable table format, confirming when a program is successfully loaded.
+20. The system shall display output in a separate text area when the program executes a WRITE instruction (011XXX).
+21. The system shall prevent the user from running the program if no file is loaded or if the file contains format errors.
+22. The system shall allow the user to close the application in the GUI.
+23. The system shall initialize all memory cells (000–249) and the accumulator to 0 when a new file is loaded in.
+24. The system shall reject malformed instructions (such as: invalid characters, unsupported opcodes, or incorrect word length).
+25. The system shall raise an error on division by zero.
+26. The system’s accumulator values exceeding ±999999 shall wrap using modulo 1,000,000.
+27. The system shall display error messages coinciding with errors that might be encountered (ex. bad words in a file, missing words, trying to access out-of-range memory).
+28. The system shall support multiple files open at once via GUI tabs or windows, but only allow one program to execute at a time. 4-digit files shall be automatically converted to 6-digit format before editing or running.
+
+Non-functional:
+
+1. The system shall be built using tiered architecture.
+2. The system shall avoid crashes through input validation and exception handling.
+3. The system shall make it clear to the user if the file chosen isn’t of the correct format (e.g., wrong length, illegal characters, too many lines).
+4. The system shall be compatible with Python 3+.
+5. The system shall be compatible with Windows and macOS.
+6. The system shall execute the program and remain responsive (≤ 3 seconds for 250 instructions).
