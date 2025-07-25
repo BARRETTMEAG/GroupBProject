@@ -8,8 +8,17 @@ class CPU:
         self.halted = False
 
     def execute(self, instruction, memory):
-        opcode = instruction // 1000
-        operand = instruction % 1000
+        abs_instr = abs(instruction)
+
+        if abs_instr >= 10000:  # Likely 6-digit format (e.g. 010020)
+            instr_str = f"{abs_instr:06d}"  # Always 6 characters with leading 0s
+            opcode = int(instr_str[:3])     # First 3 digits
+            operand = int(instr_str[3:])    # Last 3 digits
+        else:  # 4-digit format (e.g. 1020)
+            instr_str = f"{abs_instr:04d}"  # Always 4 characters
+            opcode = int(instr_str[:2])     # First 2 digits
+            operand = int(instr_str[2:])    # Last 2 digits
+
 
         if opcode == 10:  # READ = Read a word from the keyboard into a specific location in memory.
             memory.waiting_for_input = True
