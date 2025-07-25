@@ -13,7 +13,7 @@ Functional:
 9. The system GUI shall allow a user to save their file to a user-chosen directory with optional renaming.
 10. The program shall begin operation at the first location in memory (000) when the ‘run program’ button is clicked.
 11. The system’s memory access shall be restricted to valid address space (000–249).
-12. The system shall display a ‘run program’ button, allowing an open file to be executed, while disabling execution of other open files.
+12. The system shall display a ‘run program’ button, allowing an open file to be executed.
 13. The system shall open a user-input popup when a READ command (010XXX) is encountered in the program.
 14. The system shall read the contents of the input field in the input popup into memory when the user clicks the ‘submit’ button in the popup window.
 15. The system’s execution shall support various 6-digit opcodes within the range 010–043:
@@ -39,9 +39,10 @@ Functional:
 23. The system shall initialize all memory cells (000–249) and the accumulator to 0 when a new file is loaded in.
 24. The system shall reject malformed instructions (such as: invalid characters, unsupported opcodes, or incorrect word length).
 25. The system shall raise an error on division by zero.
-26. The system’s accumulator values exceeding ±999999 shall wrap using modulo 1,000,000.
+26. The system’s accumulator and register values exceeding ±999999 shall wrap using modulo 1,000,000.
 27. The system shall display error messages coinciding with errors that might be encountered (ex. bad words in a file, missing words, trying to access out-of-range memory).
-28. The system shall support multiple files open at once via GUI tabs or windows, but only allow one program to execute at a time. 4-digit files shall be automatically converted to 6-digit format before editing or running.
+28. The system shall support multiple files open at once via GUI tabs or windows. 4-digit files shall be automatically converted to 6-digit format before editing or running.
+29. The system shall only allow files with words of consistent size, either 4-digit or 6-digit words.
 
 Non-functional:
 
