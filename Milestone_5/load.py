@@ -1,3 +1,4 @@
+
 import os
 from convert import Convert
 from memory import Memory
@@ -10,6 +11,8 @@ class Load_Program():
 
     def load_program(self, filename):
         i = 0
+        firstWordLength = 0
+        wordConsistencyEnforcer = 0
         word = ""
         if os.path.isfile(filename):
             with open(filename, "r") as file:
@@ -17,7 +20,7 @@ class Load_Program():
                     char = file.read(1)
                     if not char:
                         if word and word != '\n' and word != '\t':
-
+                            
                             cleaned = word.strip()  # ADDED
                             unsigned = cleaned.lstrip("+-")  # ADDED
 
@@ -79,6 +82,14 @@ class Load_Program():
                                 raise ValueError(f"Instruction out of range at memory [{i}]: {instruction}")
 
                             print(f"Loading instruction at memory[{i}]: '{stripped}' -> {instruction}")  # ADDED DEBUG
+
+                            wordConsistencyEnforcer = len(word)
+
+                            if i == 0:
+                                firstWordLength = len(word)
+
+                            if firstWordLength != wordConsistencyEnforcer:
+                                raise ValueError(f"All words in the file must be the same size.  Word {i} in the file (0-based) is inconsistent...")
 
                             self.memory.write(i, instruction)
                             i += 1
