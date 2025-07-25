@@ -18,45 +18,67 @@ class Load_Program():
                     if not char:
                         if word and word != '\n' and word != '\t':
 
+                            cleaned = word.strip()  # ADDED
+                            unsigned = cleaned.lstrip("+-")  # ADDED
+
+                            # Enforce 4 or 6 digits only (reject 5-digit words)  # ADDED
+                            if len(unsigned) not in (4, 6):
+                                raise ValueError(f"Only 4-digit or 6-digit words allowed. Invalid word at memory [{i}]: '{cleaned}'")
+
                             if '+' in word or '-' in word:
                                 if len(word) > 8:
                                     raise ValueError(f"Improper word length at memory [{i}]")
                                 else:
-                                    instruction = Convert.convert_to_int(word)
+                                    instruction = Convert.convert_to_int(cleaned)  # use cleaned
                             else:
                                 if len(word) > 7:
                                     raise ValueError(f"Improper word length at memory [{i}]")
                                 else:
-                                    instruction = Convert.convert_to_int(word)
+                                    instruction = Convert.convert_to_int(cleaned)  # use cleaned
 
                             if instruction is False:
                                 raise ValueError(f"Invalid word at memory [{i}]")
-                            
-                            #check instruction length
+
+                            # Validate instruction range (ADDED)
+                            if not (-999999 <= instruction <= 999999):
+                                raise ValueError(f"Instruction out of range at memory [{i}]: {instruction}")
+
+                            print(f"Loading instruction at memory[{i}]: '{cleaned}' -> {instruction}")  # ADDED DEBUG
 
                             self.memory.write(i, instruction)
                         break
                     word += char
                     if char.isspace():
                         if char == '\n':
-                            if not word.strip():
+                            stripped = word.strip()  # ADDED
+                            unsigned = stripped.lstrip("+-")  # ADDED
+
+                            if not stripped:
                                 raise ValueError(f"Empty word at memory [{i}]")
-                            
+
+                            # Enforce 4 or 6 digits only (reject 5-digit words)  # ADDED
+                            if len(unsigned) not in (4, 6):
+                                raise ValueError(f"Only 4-digit or 6-digit words allowed. Invalid word at memory [{i}]: '{stripped}'")
+
                             if '+' in word or '-' in word:
                                 if len(word) > 8:
                                     raise ValueError(f"Improper word length at memory [{i}]")
                                 else:
-                                    instruction = Convert.convert_to_int(word)
+                                    instruction = Convert.convert_to_int(stripped)  # use stripped
                             else:
                                 if len(word) > 7:
                                     raise ValueError(f"Improper word length at memory [{i}]")
                                 else:
-                                    instruction = Convert.convert_to_int(word)
-                                    
+                                    instruction = Convert.convert_to_int(stripped)  # use stripped
+
                             if instruction is False:
                                 raise ValueError(f"Invalid word at memory [{i}]")
-                            
-                            #check instruction length
+
+                            # Validate instruction range (ADDED)
+                            if not (-999999 <= instruction <= 999999):
+                                raise ValueError(f"Instruction out of range at memory [{i}]: {instruction}")
+
+                            print(f"Loading instruction at memory[{i}]: '{stripped}' -> {instruction}")  # ADDED DEBUG
 
                             self.memory.write(i, instruction)
                             i += 1
