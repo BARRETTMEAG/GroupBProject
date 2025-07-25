@@ -17,9 +17,9 @@ This program is written in Python and is available through GitHub.
 4. When prompted in a new pop-up window, enter your input for a READ opcode and click "submit".
 5. After application is processed, the user can resubmit a new file.
 6. Save the current file using the "Save Program File" button.
-7. Click the red circle in the top left corner to terminate the program and close window.
+7. Click the red 'x' in the top corner to terminate the program and close window.
 8. You can load files from any user-specified folder.
-9. You can open multiple files at the same time inside the application, switching between them using tabs.
+9. You can open multiple files at the same time inside the application, switching between each as windows.
 10. Only one file can be executed at a time.
 11. Files can now be edited directly in the GUI after loading, including:
     - Adding new instructions
@@ -55,14 +55,16 @@ self.off = "#FFFFFF"
 ## Input File Format
 - The input file should contain BasicML instructions, one per line.
 - Each instruction must be a signed integer.
-  - Legacy format: 5-digit (e.g., +1020 or -4321)
+  - Legacy format: 4-digit (e.g., +1020 or -4321)
   - New format: 6-digit (e.g., +010007 or +005555)
 - Ensure the file includes a HALT instruction (+4300 or +043000) to terminate the program.
 - Files must use either 4-digit or 6-digit instructions, not both.
+- The program expects every instruction/value digit length to match that of the first instruction, and will throw an exception with inconsistencies.
 
 ## File Formats and Conversion
-- Old files use 4-digit word format and support 100 memory addresses (00–99).
-- New files use 6-digit word format and support 250 memory addresses (000–249).
+- Old 4-digit words will be converted to 6-digit words before program execution.
+- New files should be designed using 6-digit words/instructions.
+- 250 memory addresses are usable by the 6-digit word programs.
 - Your program will automatically detect and support both formats.
 - You can also convert 4-digit files to 6-digit format using the built-in file converter.
 - During conversion:
