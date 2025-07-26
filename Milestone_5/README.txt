@@ -58,23 +58,19 @@ self.off = "#FFFFFF"
   - Legacy format: 4-digit (e.g., +1020 or -4321)
   - New format: 6-digit (e.g., +010007 or +005555)
 - Ensure the file includes a HALT instruction (+4300 or +043000) to terminate the program.
+- If the user wishes to perform mathematical operations using values stored in the file, those values should come after the HALT instruction so as to not be read as instructions.
 - Files must use either 4-digit or 6-digit instructions, not both.
 - The program expects every instruction/value digit length to match that of the first instruction, and will throw an exception with inconsistencies.
 
 ## File Formats and Conversion
-- Old 4-digit words will be converted to 6-digit words before program execution.
+- Old 4-digit words will be converted to 6-digit words automatically before program execution.
 - New files should be designed using 6-digit words/instructions.
 - 250 memory addresses are usable by the 6-digit word programs.
 - Your program will automatically detect and support both formats.
-- You can also convert 4-digit files to 6-digit format using the built-in file converter.
-- During conversion:
-  - If the instruction starts with a valid opcode, it will be converted like this:
-    1007 → 010007
-  - If the instruction is a number (not a command), it will be converted like this:
-    5555 → 005555
+
 
 ## Testing the Application
-To test the application, submit the file to be tested. If no error occurs, the application should run smoothly. If an error occurs, the instructions will stop being read and the user will be notified of the specific error caught in the .txt file.
+To test the application, submit the file to be tested. If no error occurs, the application should run smoothly. If an error occurs, the instructions will stop being read and the user will be notified of the specific error caught in the .txt file (note some errors will prevent the program from loading before beginning to read instructions).  Errors will communicate the problem clearly to the user.
 
 When entering a four-digit number (+1235), the number is separated by the first two digits and the last two digits. The 12 is known as the memory code and the 35 is the memory location portion of the code.
 
