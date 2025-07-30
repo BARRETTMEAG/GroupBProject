@@ -1,8 +1,6 @@
-
 import os
 from convert import Convert
 from memory import Memory
-
 
 class Load_Program():
 
