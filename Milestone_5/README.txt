@@ -6,7 +6,7 @@ This program is written in Python and is available through GitHub.
 
 ## How to Launch the Application
 1. Open a terminal or command prompt.
-2. Navigate to the directory containing the uvsim_gui.py file.
+2. Navigate to the directory containing the main.py file.
 3. Run the program using the following command:
    python3 main.py
 
