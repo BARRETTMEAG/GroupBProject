@@ -19,7 +19,6 @@ class CPU:
             opcode = int(instr_str[:2])     # First 2 digits
             operand = int(instr_str[2:])    # Last 2 digits
 
-
         if opcode == 10:  # READ = Read a word from the keyboard into a specific location in memory.
             memory.waiting_for_input = True
             if hasattr(memory, 'read_callback') and memory.read_callback:
